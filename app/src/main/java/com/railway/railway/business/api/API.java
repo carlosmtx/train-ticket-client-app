@@ -8,6 +8,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * Created by cteixeira on 08-10-2015.
  */
+
 public interface API {
     Response login(String username,String password) throws InterruptedException, ExecutionException, TimeoutException;
 }

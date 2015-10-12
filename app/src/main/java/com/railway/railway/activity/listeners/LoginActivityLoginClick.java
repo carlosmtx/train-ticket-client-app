@@ -3,9 +3,10 @@ package com.railway.railway.activity.listeners;
 import android.view.View;
 import android.widget.Toast;
 
+import com.railway.railway.DaggerApplicationComponent;
 import com.railway.railway.business.api.API;
-import com.railway.railway.business.api.RailwayAPI;
 import com.railway.railway.business.api.response.AuthResponse;
+
 
 public class LoginActivityLoginClick implements View.OnClickListener{
 
@@ -17,9 +18,10 @@ public class LoginActivityLoginClick implements View.OnClickListener{
         String email = "dasdasdassd";//emailInput.getText().toString();
         String passw = "dasdasdassd";//passwInput.getText().toString();
 
-        API api = RailwayAPI.getInstance(view.getContext());
         AuthResponse response = null;
+
         try {
+             API api = DaggerApplicationComponent.create().provideRequestAPI();
              response = (AuthResponse) api.login(email,passw);
         } catch (Exception e) {
             //TODO: Improve Exception Handling

@@ -19,17 +19,7 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
         //add handler for login
         Button login = (Button)findViewById(R.id.email_sign_in_button);
-
         login.setOnClickListener(new LoginActivityLoginClick());
-
-
-        //add handler for register
-/*        Button register = (Button)findViewById(R.id.register_button);
-        register.setOnClickListener();*/
-
-
-
-
     }
 }
 
