@@ -10,7 +10,7 @@ public class LoginActivityLoginClick implements View.OnClickListener{
     public void onClick(View view) {
         //TextView emailInput= (TextView)view.findViewById(R.id.email);
         //TextView passwInput= (TextView)view.findViewById(R.id.password);
-        new LoginActivityLoginClickTask().execute(
+        new LoginActivityLoginClickTask(view.getContext()).execute(
                 "DASDASD",//emailInput.getText().toString(),
                 "DASDASD"//passwInput.getText().toString()
         );
