@@ -13,11 +13,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 
-public class LoginRequest implements Request {
+public class AuthRequest implements Request {
     public JsonObjectRequest request;
-    private RequestFuture<JSONObject> future ;
+    public final RequestFuture<JSONObject> future ;
 
-    public LoginRequest(String username, String password) {
+    public AuthRequest(String username, String password) {
         String url = "https://cmovtrainserver.herokuapp.com/hello";
         JSONObject jsonParameters = new JSONObject();
         try {
@@ -41,7 +41,12 @@ public class LoginRequest implements Request {
 
     @Override
     public Response getResponse() throws ExecutionException, InterruptedException, TimeoutException {
-        JSONObject rawResponse = this.future.get(10, TimeUnit.SECONDS);
+        JSONObject rawResponse = null;
+        try{
+            rawResponse = this.future.get(30, TimeUnit.SECONDS);
+        } catch (Exception e){
+            int a = 2 ;
+        }
         return (Response) new AuthResponse(rawResponse);
     }
 

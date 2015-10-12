@@ -1,12 +1,8 @@
 package com.railway.railway.activity.listeners;
 
 import android.view.View;
-import android.widget.Toast;
-
-import com.railway.railway.DaggerApplicationComponent;
-import com.railway.railway.business.api.API;
-import com.railway.railway.business.api.response.AuthResponse;
-
+import android.widget.TextView;
+import com.railway.railway.R;
 
 public class LoginActivityLoginClick implements View.OnClickListener{
 
@@ -14,21 +10,9 @@ public class LoginActivityLoginClick implements View.OnClickListener{
     public void onClick(View view) {
         //TextView emailInput= (TextView)view.findViewById(R.id.email);
         //TextView passwInput= (TextView)view.findViewById(R.id.password);
-
-        String email = "dasdasdassd";//emailInput.getText().toString();
-        String passw = "dasdasdassd";//passwInput.getText().toString();
-
-        AuthResponse response = null;
-
-        try {
-             API api = DaggerApplicationComponent.create().provideRequestAPI();
-             response = (AuthResponse) api.login(email,passw);
-        } catch (Exception e) {
-            //TODO: Improve Exception Handling
-            e.printStackTrace();
-        }
-        assert response != null;
-        Toast.makeText(view.getContext(),response.response.toString(),Toast.LENGTH_LONG).show();
-
+        new LoginActivityLoginClickTask().execute(
+                "DASDASD",//emailInput.getText().toString(),
+                "DASDASD"//passwInput.getText().toString()
+        );
     }
 }

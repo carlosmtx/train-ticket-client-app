@@ -8,6 +8,9 @@ import com.railway.railway.RailwayApplication;
 import com.railway.railway.business.api.API;
 import com.railway.railway.business.api.RailwayAPI;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -30,5 +33,9 @@ public class ApplicationModule {
     @Provides @Inject
     API provideAPI(RequestQueue queue) {
         return new RailwayAPI(queue);
+    }
+    @Singleton @Provides
+    ExecutorService provideThreadPool() {
+        return Executors.newFixedThreadPool(10);
     }
 }
