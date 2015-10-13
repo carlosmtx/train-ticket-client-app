@@ -34,8 +34,5 @@ public class ApplicationModule {
     API provideAPI(RequestQueue queue) {
         return new RailwayAPI(queue);
     }
-    @Singleton @Provides
-    ExecutorService provideThreadPool() {
-        return Executors.newFixedThreadPool(10);
-    }
+
 }

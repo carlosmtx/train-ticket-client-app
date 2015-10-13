@@ -18,5 +18,4 @@ public interface ApplicationComponent {
     Context provideAppContext();
     RequestQueue provideRequestQueue();
     API provideRequestAPI();
-    ExecutorService provideThreadPool();
 }
