@@ -8,8 +8,8 @@ import com.railway.railway.RailwayApplication;
 import com.railway.railway.business.api.API;
 import com.railway.railway.business.api.RailwayAPI;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.net.CookieHandler;
+import java.net.CookieManager;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -27,10 +27,12 @@ public class ApplicationModule {
 
     @Provides @Inject @Singleton
     RequestQueue provideRequestQueue(Context context) {
+        CookieManager manager = new CookieManager();
+        CookieHandler.setDefault(manager);
         return Volley.newRequestQueue(context);
     }
 
-    @Provides @Inject
+    @Provides @Singleton @Inject
     API provideAPI(RequestQueue queue) {
         return new RailwayAPI(queue);
     }

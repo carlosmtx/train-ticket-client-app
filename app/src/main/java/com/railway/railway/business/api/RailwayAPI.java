@@ -1,29 +1,26 @@
 package com.railway.railway.business.api;
 
 import com.android.volley.RequestQueue;
-import com.railway.railway.business.api.request.AuthRequest;
-import com.railway.railway.business.api.request.Request;
-import com.railway.railway.business.api.response.Response;
-
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
+import com.railway.railway.business.api.context.APIContext;
+import com.railway.railway.business.api.context.RailwayContext;
+import com.railway.railway.business.api.request.APIRequest;
 
 import javax.inject.Inject;
 
 
 public class RailwayAPI implements API {
 
-    private RequestQueue queue;
+    APIContext apiContext;
+    private RequestQueue client;
 
     @Inject
-    public RailwayAPI(RequestQueue queue){
-        this.queue = queue;
+    public RailwayAPI(RequestQueue client){
+        this.client = client;
+        apiContext = new RailwayContext();
     }
 
     @Override
-    public Response login(String username, String password) throws InterruptedException, ExecutionException, TimeoutException {
-        final Request req = new AuthRequest(username,password);
-        queue.add(req.getRequest());
-        return req.getResponse();
+    public void request(APIRequest request) {
+        client.add(request.getRequest());
     }
 }
