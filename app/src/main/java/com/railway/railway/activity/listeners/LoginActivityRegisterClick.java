@@ -1,6 +1,11 @@
 package com.railway.railway.activity.listeners;
 
+import android.content.Intent;
 import android.view.View;
+import android.widget.EditText;
+
+import com.railway.railway.activity.LoginActivity;
+import com.railway.railway.activity.RegisterActivity;
 
 /**
  * Created by cteixeira on 10-10-2015.
@@ -8,6 +13,7 @@ import android.view.View;
 public class LoginActivityRegisterClick implements View.OnClickListener{
     @Override
     public void onClick(View v) {
-
+        Intent intent = new Intent(v.getContext(), RegisterActivity.class);
+        v.getContext().startActivity(intent);
     }
 }
