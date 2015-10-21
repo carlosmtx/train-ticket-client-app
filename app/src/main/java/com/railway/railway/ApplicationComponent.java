@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.android.volley.RequestQueue;
 import com.railway.railway.business.api.API;
+import com.railway.railway.business.api.storage.Storage;
 import com.railway.railway.module.ApplicationModule;
 
 import java.util.concurrent.ExecutorService;
@@ -18,4 +19,5 @@ public interface ApplicationComponent {
     Context provideAppContext();
     RequestQueue provideRequestQueue();
     API provideRequestAPI();
+    Storage provideStorage();
 }

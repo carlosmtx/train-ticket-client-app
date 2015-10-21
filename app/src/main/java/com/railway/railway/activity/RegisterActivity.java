@@ -3,6 +3,7 @@ package com.railway.railway.activity;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.railway.railway.DaggerApplicationComponent;
 import com.railway.railway.R;
 
 /**

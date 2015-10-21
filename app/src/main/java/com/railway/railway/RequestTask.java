@@ -22,7 +22,6 @@ public class RequestTask {
     private RequestTask(Context context) {
         mCtx = context;
         mRequestQueue = getRequestQueue();
-
     }
 
     public static synchronized RequestTask getInstance(Context context) {

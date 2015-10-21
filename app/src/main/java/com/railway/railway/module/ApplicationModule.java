@@ -7,6 +7,8 @@ import com.android.volley.toolbox.Volley;
 import com.railway.railway.RailwayApplication;
 import com.railway.railway.business.api.API;
 import com.railway.railway.business.api.RailwayAPI;
+import com.railway.railway.business.api.storage.RailwayStorage;
+import com.railway.railway.business.api.storage.Storage;
 
 import java.net.CookieHandler;
 import java.net.CookieManager;
@@ -30,6 +32,11 @@ public class ApplicationModule {
         CookieManager manager = new CookieManager();
         CookieHandler.setDefault(manager);
         return Volley.newRequestQueue(context);
+    }
+
+    @Provides @Singleton
+    Storage provideStorage(){
+       return new RailwayStorage();
     }
 
     @Provides @Singleton @Inject

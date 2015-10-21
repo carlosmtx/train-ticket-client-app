@@ -17,15 +17,19 @@ import java.util.concurrent.TimeoutException;
 
 public class LoginActivityLoginClickTask extends AsyncTask<String,Void,User> {
     private Context context;
+    private final String username;
+    private final String password;
 
-    LoginActivityLoginClickTask(Context view){
+    LoginActivityLoginClickTask(Context view,String username,String password){
         this.context = view;
+
+        this.username = username;
+        this.password = password;
     }
 
     @Override
     protected User doInBackground(String... params) {
-        String username = params[0];
-        String password = params[1];
+
         API api = DaggerApplicationComponent.create().provideRequestAPI();
         try {
             AuthRequest request = new AuthRequest(username,password);
