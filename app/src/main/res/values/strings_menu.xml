@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_used_tickets">Used Tickets</string>
+    <string name="menu_user_account">Account</string>
+    <string name="menu_user_settings">Settings</string>
+</resources>

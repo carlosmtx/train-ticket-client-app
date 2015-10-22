@@ -48,7 +48,7 @@ public class LoginActivityLoginClickTask extends AsyncTask<String,Void,User> {
             Intent intent = new Intent(context, UserActivity.class);
             context.startActivity(intent);
         } else {
-            toast = Toast.makeText(context,"Please verify your credentials!",Toast.LENGTH_LONG);
+            toast = Toast.makeText(context,"Please verify your credentials!",Toast.LENGTH_SHORT);
         }
         toast.show();
     }
