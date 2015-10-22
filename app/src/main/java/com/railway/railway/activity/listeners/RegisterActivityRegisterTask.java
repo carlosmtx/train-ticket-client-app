@@ -32,7 +32,6 @@ public class RegisterActivityRegisterTask extends AsyncTask<Void, Void, JSONObje
     protected JSONObject doInBackground(Void... params) {
         try {
             this.request = new RegisterRequest(data);
-            DI.get().provideRequestAPI().request(this.request);
             return this.request.getResponse();
         } catch (JSONException e) {
             e.printStackTrace();
@@ -46,11 +45,6 @@ public class RegisterActivityRegisterTask extends AsyncTask<Void, Void, JSONObje
     @Override
     protected void onPostExecute(JSONObject result) {
         Toast toast;
-        try {
-            DI.get().provideStorage().setToken(result.get("token").toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
         if(result == null){
             toast = Toast.makeText(this.context,"Nhé... deu asneira",Toast.LENGTH_LONG);
         } else {

@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.railway.railway.R;
 import com.railway.railway.activity.LoginActivity;
+import com.railway.railway.business.api.request.AuthRequestData;
 
 public class LoginActivityLoginClick implements View.OnClickListener{
 
@@ -12,10 +13,13 @@ public class LoginActivityLoginClick implements View.OnClickListener{
         LoginActivity activity= (LoginActivity) view.getContext();
         TextView emailInput= (TextView)activity.findViewById(R.id.register_email);
         TextView passwInput= (TextView)activity.findViewById(R.id.register_password);
-        new LoginActivityLoginClickTask(
-                activity,
+
+        AuthRequestData data = new AuthRequestData(
                 emailInput.getText().toString(),
                 passwInput.getText().toString()
+        );
+        new LoginActivityLoginClickTask(
+                activity,data
         ).execute();
     }
 }

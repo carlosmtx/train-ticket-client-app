@@ -3,6 +3,8 @@ package com.railway.railway.business.api.request;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
+import com.railway.railway.DI;
+import com.railway.railway.business.api.API;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,6 +20,7 @@ public class RegisterRequest implements APIRequest {
 
     public final RequestFuture<JSONObject> future ;
     private final JsonObjectRequest request;
+    private final API api;
 
     public RegisterRequest(RegisterRequestData data) throws JSONException {
 
@@ -39,6 +42,7 @@ public class RegisterRequest implements APIRequest {
                 future,
                 future
         );
+        api = DI.get().provideRequestAPI();
     }
 
     @Override
@@ -46,9 +50,11 @@ public class RegisterRequest implements APIRequest {
         return this.request;
     }
 
-    public JSONObject getResponse() throws ExecutionException, InterruptedException {
-        return future.get();
-
+    public JSONObject getResponse() throws ExecutionException, InterruptedException, JSONException {
+        api.request(this);
+        JSONObject response = future.get();
+        DI.get().provideStorage().setToken(response.get("token").toString());
+        return response;
     }
 
 }

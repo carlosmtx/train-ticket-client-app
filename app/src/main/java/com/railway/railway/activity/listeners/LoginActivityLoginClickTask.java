@@ -8,6 +8,7 @@ import com.railway.railway.DaggerApplicationComponent;
 import com.railway.railway.business.api.API;
 import com.railway.railway.business.api.request.AuthRequest;
 import com.railway.railway.business.api.entity.User;
+import com.railway.railway.business.api.request.AuthRequestData;
 
 import org.json.JSONException;
 
@@ -17,23 +18,18 @@ import java.util.concurrent.TimeoutException;
 
 public class LoginActivityLoginClickTask extends AsyncTask<String,Void,User> {
     private Context context;
-    private final String username;
-    private final String password;
+    private AuthRequestData data;
 
-    LoginActivityLoginClickTask(Context view,String username,String password){
+    LoginActivityLoginClickTask(Context view,AuthRequestData data){
         this.context = view;
-
-        this.username = username;
-        this.password = password;
+        this.data = data;
     }
 
     @Override
     protected User doInBackground(String... params) {
 
-        API api = DaggerApplicationComponent.create().provideRequestAPI();
         try {
-            AuthRequest request = new AuthRequest(username,password);
-            api.request(request);
+            AuthRequest request = new AuthRequest(this.data);
             return request.getResponse();
         } catch (JSONException | TimeoutException | ExecutionException | InterruptedException e) {
             e.printStackTrace();
