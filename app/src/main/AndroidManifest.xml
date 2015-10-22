@@ -24,6 +24,10 @@
             android:name=".activity.RegisterActivity"
             android:label="@string/title_activity_activity_register" >
         </activity>
+        <activity
+            android:name=".activity.UserActivity"
+            android:label="@string/title_activity_tickets" >
+        </activity>
     </application>
 
 </manifest>

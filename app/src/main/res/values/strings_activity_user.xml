@@ -1,0 +1,4 @@
+<resources>
+    <string name="user_title">My Tickets</string>
+    <string name="user_btn_purchase">Purchase Ticket</string>
+</resources>
