@@ -1,12 +1,15 @@
 package com.railway.railway.activity.listeners;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.railway.railway.R;
+import com.railway.railway.activity.UserActivity;
 import com.railway.railway.business.api.request.MyTicketsRequest;
-import com.railway.railway.business.api.request.MyTicketsRequestData;
-import com.railway.railway.business.api.request.RegisterRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,20 +22,20 @@ import java.util.concurrent.TimeoutException;
  */
 public class UserActivityMyTicketsTask extends AsyncTask<Void, Void, JSONObject> {
 
-    private Context context;
-    //private MyTicketsRequestData data;
+    private Activity activity;
     private MyTicketsRequest request;
+    private JSONObject result;
 
-    public UserActivityMyTicketsTask(Context context, boolean start){
-        if(start) this.execute();
-        this.context = context;
+    public UserActivityMyTicketsTask(Activity activity) {
+        this.activity = activity;
     }
 
     @Override
     protected JSONObject doInBackground(Void... params) {
         try {
             this.request = new MyTicketsRequest();
-            return this.request.getResponse();
+            result = this.request.getResponse();
+            return result;
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
@@ -43,13 +46,22 @@ public class UserActivityMyTicketsTask extends AsyncTask<Void, Void, JSONObject>
     }
 
     @Override
-    protected void onPostExecute(JSONObject result) {
+    protected void onPostExecute(JSONObject result){
         Toast toast;
         if(result == null){
-            toast = Toast.makeText(this.context,"Nhé... deu asneira",Toast.LENGTH_LONG);
+            toast = Toast.makeText(this.activity,"There was an error retrieving tickets",Toast.LENGTH_LONG);
+            toast.show();
         } else {
-            toast = Toast.makeText(this.context,result.toString(),Toast.LENGTH_LONG);
+            try {
+                ((UserActivity)activity).fillTicketsContainer(result);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-        toast.show();
     }
+
+    public JSONObject getResult(){
+        return this.result;
+    }
+
 }

@@ -28,6 +28,14 @@
             android:name=".activity.UserActivity"
             android:label="@string/title_activity_user" >
         </activity>
+        <activity
+            android:name=".activity.TicketQRCodeActivity"
+            android:label="@string/title_activity_ticket_qrcode"
+            android:parentActivityName=".activity.UserActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.railway.railway.activity.UserActivity" />
+        </activity>
     </application>
 
 </manifest>
