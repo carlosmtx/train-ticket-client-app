@@ -21,16 +21,16 @@ public class TicketQRCodeActivity extends AppCompatActivity {
 
         Ticket ticket = (Ticket)getIntent().getSerializableExtra("ticket");
         TextView ticketInfo = (TextView)findViewById(R.id.ticketqrcode_lbl_ticket);
-        String txt = "From: "
+        String infoTxt = "From: "
                 + ticket.getStart() + "\n"
                 + "To: "
                 + ticket.getEnd() + "\n"
                 + ticket.getPrice() + "€\n"
                 + "Train number: " + ticket.getTrain();
 
-        ticketInfo.setText(txt);
+        ticketInfo.setText(infoTxt);
 
-        QRCodeView qrCodeView = new QRCodeView(this,txt);
+        QRCodeView qrCodeView = new QRCodeView(this,ticket);
         LinearLayout qrCodeContainer = (LinearLayout)findViewById(R.id.ticketqrcode_container);
         qrCodeContainer.addView(qrCodeView);
     }

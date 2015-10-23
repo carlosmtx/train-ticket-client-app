@@ -8,16 +8,25 @@ import android.view.View;
 import com.onbarcode.barcode.android.AndroidColor;
 import com.onbarcode.barcode.android.IBarcode;
 import com.onbarcode.barcode.android.QRCode;
+import com.railway.railway.business.api.entity.Ticket;
 
 /**
  * Created by Leonel on 23/10/2015.
  */
 public class QRCodeView extends View {
-    private String qrcode;
+    private Ticket ticket;
 
-    public QRCodeView(Context context, String qr) {
+    public QRCodeView(Context context, Ticket ticket) {
         super(context);
-        this.qrcode = qr;
+        this.ticket = ticket;
+    }
+
+    private String generateQRCodeString(){
+        return this.ticket.getStart()
+                +";"+this.ticket.getEnd()
+                +";"+this.ticket.getValidated()
+                +";"+this.ticket.getId()
+                +";"+this.ticket.getTrain();
     }
 
     @Override
@@ -42,16 +51,11 @@ public class QRCodeView extends View {
               byte data (default: ISO/IEC 8859-1);
               Kanji characters
       */
-        // some data
-        // for example: bizcard format
-        barcode.setData("BIZCARD:N:Kelly;X:Goto;T:Design Ethnographer;C:gotomedia LLC;A:2169 Folsom Street M302;B:4158647007;F:4158647004;M:4159907005;E:kelly@gotomedia.com;;");
-
-
-        // a small QRcode with 68 characters
-        //barcode.setData(qrcode);
+        barcode.setData(generateQRCodeString());
         barcode.setDataMode(QRCode.M_AUTO);
         barcode.setVersion(1);
         barcode.setEcl(QRCode.ECL_L);
+
 
         //  if you want to encode GS1 compatible QR Code, you need set FNC1 mode to IBarcode.FNC1_ENABLE
         barcode.setFnc1Mode(IBarcode.FNC1_NONE);

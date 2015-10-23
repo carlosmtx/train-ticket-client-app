@@ -9,19 +9,25 @@ import java.io.Serializable;
  * Created by Leonel on 23/10/2015.
  */
 public class Ticket implements Serializable {
+
+    private int id;
     private String start;
     private String end;
-    private Boolean validated;
-    private Float price;
-    private Integer train;
+    private boolean validated;
+    private float price;
+    private int train;
 
     public Ticket(JSONObject t) throws JSONException {
         this.start = t.get("start").toString();
         this.end = t.get("end").toString();
-        this.validated = (Boolean) t.get("validated");
+        this.validated = (boolean) t.get("validated");
         this.price = Float.valueOf(t.get("price").toString());
         this.train = (Integer) t.get("train");
+        this.id = (Integer) t.get("id");
 
+    }
+    public int getId() {
+        return id;
     }
 
     public String getStart() {

@@ -28,6 +28,7 @@ public class UserActivityOnBackPressed {
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(context, LoginActivity.class);
                 context.startActivity(intent);
+                //TODO: finish activity
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
