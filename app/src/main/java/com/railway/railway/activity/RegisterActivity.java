@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.railway.railway.DaggerApplicationComponent;
 import com.railway.railway.R;
 import com.railway.railway.activity.listeners.RegisterActivityRegisterClick;
 

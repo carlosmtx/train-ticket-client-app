@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.railway.railway.DaggerApplicationComponent;
 import com.railway.railway.activity.UserActivity;
-import com.railway.railway.business.api.API;
-import com.railway.railway.business.api.request.AuthRequest;
 import com.railway.railway.business.api.entity.User;
+import com.railway.railway.business.api.request.AuthRequest;
 import com.railway.railway.business.api.request.AuthRequestData;
 
 import org.json.JSONException;

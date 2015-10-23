@@ -2,9 +2,7 @@ package com.railway.railway.activity.listeners;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.EditText;
 
-import com.railway.railway.activity.LoginActivity;
 import com.railway.railway.activity.RegisterActivity;
 
 /**

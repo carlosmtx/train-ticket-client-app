@@ -1,13 +1,9 @@
 package com.railway.railway.activity.listeners;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.railway.railway.R;
 import com.railway.railway.activity.UserActivity;
 import com.railway.railway.business.api.request.MyTicketsRequest;
 

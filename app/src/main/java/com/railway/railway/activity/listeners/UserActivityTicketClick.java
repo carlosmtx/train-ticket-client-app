@@ -2,18 +2,13 @@ package com.railway.railway.activity.listeners;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.View;
 
-import com.railway.railway.activity.RegisterActivity;
 import com.railway.railway.activity.TicketQRCodeActivity;
-import com.railway.railway.activity.UserActivity;
 import com.railway.railway.business.api.entity.Ticket;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.Serializable;
 
 /**
  * Created by Leonel on 23/10/2015.

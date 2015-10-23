@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.railway.railway.DI;
 import com.railway.railway.business.api.request.RegisterRequest;
 import com.railway.railway.business.api.request.RegisterRequestData;
 
