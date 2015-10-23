@@ -28,39 +28,25 @@ public class Ticket implements Serializable {
         return start;
     }
 
-    public void setStart(String start) {
-        this.start = start;
-    }
 
     public String getEnd() {
         return end;
     }
 
-    public void setEnd(String end) {
-        this.end = end;
-    }
 
     public Boolean getValidated() {
         return validated;
     }
 
-    public void setValidated(Boolean validated) {
-        this.validated = validated;
-    }
 
     public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
-        this.price = price;
-    }
 
     public Integer getTrain() {
         return train;
     }
 
-    public void setTrain(Integer train) {
-        this.train = train;
-    }
+
 }

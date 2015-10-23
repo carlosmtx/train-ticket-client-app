@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.railway.railway.R;
 import com.railway.railway.activity.listeners.UserActivityMyTicketsTask;
+import com.railway.railway.activity.listeners.UserActivityOnBackPressed;
 import com.railway.railway.activity.listeners.UserActivityPurchaseClick;
 import com.railway.railway.activity.listeners.UserActivityTicketClick;
 
@@ -88,6 +89,9 @@ public class UserActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        new UserActivityOnBackPressed(this);
+    }
 
 }
