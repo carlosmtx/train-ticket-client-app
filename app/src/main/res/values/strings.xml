@@ -10,5 +10,4 @@
         <item>Visa</item>
         <item>American Express</item>
     </string-array>
-    <string name="title_activity_tickets">TicketsActivity</string>
 </resources>

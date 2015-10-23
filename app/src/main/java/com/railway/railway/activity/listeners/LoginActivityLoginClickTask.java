@@ -42,7 +42,6 @@ public class LoginActivityLoginClickTask extends AsyncTask<String,Void,User> {
         Toast toast;
         if (response != null){
             toast = Toast.makeText(context,"Logging in...",Toast.LENGTH_LONG);
-            // TODO: será que fica bem aqui a mudança de activity? acho que faz sentido ser na "task"
             Intent intent = new Intent(context, UserActivity.class);
             context.startActivity(intent);
         } else {
