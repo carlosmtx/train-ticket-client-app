@@ -17,7 +17,7 @@ public class RegisterActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        Button registerBtn = (Button)findViewById(R.id.register_register);
+        Button registerBtn = (Button)findViewById(R.id.register_register_button);
         registerBtn.setOnClickListener(new RegisterActivityRegisterClick());
     }
 }

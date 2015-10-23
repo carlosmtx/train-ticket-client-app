@@ -18,11 +18,11 @@ public class RegisterActivityRegisterClick implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         RegisterActivity activity = (RegisterActivity) view.getContext();
-        TextView username = (TextView)activity.findViewById(R.id.register_username);
-        TextView email = (TextView)activity.findViewById(R.id.register_email);
+        TextView username = (TextView)activity.findViewById(R.id.register_username_input);
+        TextView email = (TextView)activity.findViewById(R.id.register_email_input);
         TextView password = (TextView)activity.findViewById(R.id.register_password);
-        TextView creditCardNr = (TextView)activity.findViewById(R.id.register_credit_card_nr);
-        Spinner creditCardType = (Spinner)activity.findViewById(R.id.register_credit_card_type);
+        TextView creditCardNr = (TextView)activity.findViewById(R.id.register_card_number_input);
+        Spinner creditCardType = (Spinner)activity.findViewById(R.id.register_card_type_spinner);
 
         RegisterRequestData data = new RegisterRequestData(
                 username.getText().toString(),
