@@ -5,8 +5,6 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.railway.railway.business.api.request.MyTicketsRequest;
-import com.railway.railway.business.api.request.MyTicketsRequestData;
-import com.railway.railway.business.api.request.RegisterRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;

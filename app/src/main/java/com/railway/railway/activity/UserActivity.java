@@ -1,20 +1,17 @@
 package com.railway.railway.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.railway.railway.R;
 import com.railway.railway.activity.listeners.UserActivityMyTicketsTask;
 import com.railway.railway.activity.listeners.UserActivityPurchaseClick;
-
-import java.util.concurrent.ExecutionException;
 
 public class UserActivity extends AppCompatActivity {
 

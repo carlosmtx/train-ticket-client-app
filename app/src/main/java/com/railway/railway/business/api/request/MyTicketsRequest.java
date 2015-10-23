@@ -5,7 +5,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
 import com.railway.railway.DI;
 import com.railway.railway.business.api.API;
-import com.railway.railway.business.api.entity.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
