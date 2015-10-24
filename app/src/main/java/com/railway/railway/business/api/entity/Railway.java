@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by Leonel on 24/10/2015.
@@ -26,16 +27,16 @@ public class Railway {
         }
 
         // Connections
-        //this.connections = new ArrayList<>();
-        //JSONArray connectionsInfo = railwayInfo.getJSONArray("connections");
-//
-        //if (connectionsInfo != null) {
-        //    for (int i=0;i<connectionsInfo.length();i++){
-        //        Connection currentConn = new Connection(connectionsInfo.getJSONObject(i));
-        //        this.connections.add(currentConn);
-        //    }
-        //}
+        this.connections = new ArrayList<>();
+        JSONObject connectionsInfo = railwayInfo.getJSONObject("connections");
 
+        if (connectionsInfo != null) {
+            for (int i=0;i<connectionsInfo.names().length();i++){
+                JSONObject currConn = connectionsInfo.getJSONObject(connectionsInfo.names().get(1).toString());
+                Connection currentConn = new Connection(currConn);
+                this.connections.add(currentConn);
+            }
+        }
     }
 
     public ArrayList<String> getStations() {

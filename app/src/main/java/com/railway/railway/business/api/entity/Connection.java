@@ -20,6 +20,7 @@ public class Connection {
         this.arrivalStation = con.get("aStation").toString();
         this.length = (int) con.get("length");
 
+        this.schedule = new ArrayList<>();
         JSONArray scheduleInfo = con.getJSONArray("schedule");
         if (scheduleInfo != null) {
             for (int i=0;i<scheduleInfo.length();i++){
