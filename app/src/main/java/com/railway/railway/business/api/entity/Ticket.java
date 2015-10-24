@@ -9,58 +9,50 @@ import java.io.Serializable;
  * Created by Leonel on 23/10/2015.
  */
 public class Ticket implements Serializable {
-    private String start;
-    private String end;
-    private Boolean validated;
-    private Float price;
-    private Integer train;
+
+    private int id;
+    private String departure;
+    private String arrival;
+    private boolean validated;
+    private float price;
+    private String departureTime;
 
     public Ticket(JSONObject t) throws JSONException {
-        this.start = t.get("start").toString();
-        this.end = t.get("end").toString();
-        this.validated = (Boolean) t.get("validated");
+        this.departure = t.get("departure").toString();
+        this.arrival = t.get("arrival").toString();
+        this.validated = (boolean) t.get("validated");
         this.price = Float.valueOf(t.get("price").toString());
-        this.train = (Integer) t.get("train");
+        this.id = (Integer) t.get("id");
+        this.departureTime =  t.get("departureTime").toString();
 
     }
-
-    public String getStart() {
-        return start;
+    public int getId() {
+        return id;
     }
 
-    public void setStart(String start) {
-        this.start = start;
+    public String getDeparture() {
+        return departure;
     }
 
-    public String getEnd() {
-        return end;
+
+    public String getArrival() {
+        return arrival;
     }
 
-    public void setEnd(String end) {
-        this.end = end;
-    }
 
     public Boolean getValidated() {
         return validated;
     }
 
-    public void setValidated(Boolean validated) {
-        this.validated = validated;
-    }
 
     public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
-        this.price = price;
+
+    public String getDepartureTime() {
+        return departureTime;
     }
 
-    public Integer getTrain() {
-        return train;
-    }
 
-    public void setTrain(Integer train) {
-        this.train = train;
-    }
 }

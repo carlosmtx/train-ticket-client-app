@@ -14,10 +14,10 @@ import org.json.JSONObject;
  * Created by Leonel on 23/10/2015.
  */
 public class UserActivityTicketClick implements View.OnClickListener{
-    private JSONObject ticket;
+    private Ticket ticket;
     private Context context;
 
-    public UserActivityTicketClick(Context ctx, JSONObject ticket){
+    public UserActivityTicketClick(Context ctx, Ticket ticket){
         this.ticket = ticket;
         this.context = ctx;
     }
@@ -25,11 +25,7 @@ public class UserActivityTicketClick implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(context, TicketQRCodeActivity.class);
-        try {
-            intent.putExtra("ticket", new Ticket(this.ticket));
-            context.startActivity(intent);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        intent.putExtra("ticket", ticket);
+        context.startActivity(intent);
     }
 }

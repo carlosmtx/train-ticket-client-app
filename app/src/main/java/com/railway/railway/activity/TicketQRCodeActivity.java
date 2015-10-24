@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.railway.railway.QRCodeView;
 import com.railway.railway.R;
 import com.railway.railway.business.api.entity.Ticket;
 
@@ -17,17 +20,19 @@ public class TicketQRCodeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ticket_qrcode);
 
         Ticket ticket = (Ticket)getIntent().getSerializableExtra("ticket");
+        TextView ticketInfo = (TextView)findViewById(R.id.ticketqrcode_lbl_ticket);
+        String infoTxt = "From: "
+                + ticket.getDeparture() + "\n"
+                + "To: "
+                + ticket.getArrival() + "\n"
+                + ticket.getPrice() + "€\n"
+                + "At: " + ticket.getDepartureTime();
 
-        TextView ticketRaw = (TextView)findViewById(R.id.ticketqrcode_lbl_ticket);
-        ticketRaw.setText(
-                "From: "
-                        + ticket.getStart() + "\n"
-                        + "To: "
-                        + ticket.getEnd() + "\n"
-                        + ticket.getPrice() + "€\n"
-                        + "Train number: " + ticket.getTrain()
-        );
+        ticketInfo.setText(infoTxt);
 
+        QRCodeView qrCodeView = new QRCodeView(this,ticket);
+        LinearLayout qrCodeContainer = (LinearLayout)findViewById(R.id.ticketqrcode_container);
+        qrCodeContainer.addView(qrCodeView);
     }
 
     @Override
@@ -51,4 +56,5 @@ public class TicketQRCodeActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
