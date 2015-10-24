@@ -7,9 +7,6 @@ import android.view.View;
 import com.railway.railway.activity.TicketQRCodeActivity;
 import com.railway.railway.business.api.entity.Ticket;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 /**
  * Created by Leonel on 23/10/2015.
  */

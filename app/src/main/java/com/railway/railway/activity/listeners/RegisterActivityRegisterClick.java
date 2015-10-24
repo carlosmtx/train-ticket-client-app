@@ -8,8 +8,6 @@ import com.railway.railway.R;
 import com.railway.railway.activity.RegisterActivity;
 import com.railway.railway.business.api.request.RegisterRequestData;
 
-import org.w3c.dom.Text;
-
 /**
  * Created by cteixeira on 22-10-2015.
  * com.railway.railway.activity.listeners

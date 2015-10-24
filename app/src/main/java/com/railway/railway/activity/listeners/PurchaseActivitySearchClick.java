@@ -1,6 +1,5 @@
 package com.railway.railway.activity.listeners;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 
