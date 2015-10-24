@@ -1,18 +1,23 @@
 package com.railway.railway.activity;
 
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.railway.railway.QRCodeView;
 import com.railway.railway.R;
 import com.railway.railway.business.api.entity.Ticket;
 
+import net.glxn.qrgen.android.QRCode;
+
 public class TicketQRCodeActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +32,11 @@ public class TicketQRCodeActivity extends AppCompatActivity {
                 + ticket.getArrival() + "\n"
                 + ticket.getPrice() + "€\n"
                 + "At: " + ticket.getDepartureTime();
-
         ticketInfo.setText(infoTxt);
-
-        QRCodeView qrCodeView = new QRCodeView(this,ticket);
-        LinearLayout qrCodeContainer = (LinearLayout)findViewById(R.id.ticketqrcode_container);
-        qrCodeContainer.addView(qrCodeView);
+        Bitmap myBitmap = QRCode.from(infoTxt.replace('\n',',')).bitmap();
+        ImageView myImage = (ImageView) findViewById(R.id.ticketqrcode_qrcode_image);
+//        myImage.invalidate();
+        myImage.setImageBitmap(myBitmap);
     }
 
     @Override

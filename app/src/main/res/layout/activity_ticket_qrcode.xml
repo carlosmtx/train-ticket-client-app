@@ -13,6 +13,11 @@
         android:layout_height="800px"
         android:id="@+id/ticketqrcode_container"
         android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/ticketqrcode_qrcode_image" />
     </LinearLayout>
 
     <LinearLayout
