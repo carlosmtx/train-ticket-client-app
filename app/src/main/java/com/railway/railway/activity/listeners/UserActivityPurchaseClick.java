@@ -1,7 +1,9 @@
 package com.railway.railway.activity.listeners;
 
+import android.content.Intent;
 import android.view.View;
 
+import com.railway.railway.activity.PurchaseSelectStationsActivity;
 import com.railway.railway.activity.UserActivity;
 
 /**
@@ -11,6 +13,7 @@ public class UserActivityPurchaseClick implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         UserActivity activity = (UserActivity) view.getContext();
-        // TODO: ir para outra activity
+        Intent intent = new Intent(activity, PurchaseSelectStationsActivity.class);
+        activity.startActivity(intent);
     }
 }

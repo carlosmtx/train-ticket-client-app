@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="purchase_lbl_intro">I\'d like to travel...</string>
+
+    <string name="purchase_lbl_departure">From:</string>
+    <string name="purchase_lbl_arrival">To:</string>
+    <string name="purchase_btn_proceed">Search Schedule</string>
+</resources>
