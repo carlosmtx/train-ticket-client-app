@@ -11,32 +11,32 @@ import java.io.Serializable;
 public class Ticket implements Serializable {
 
     private int id;
-    private String start;
-    private String end;
+    private String departure;
+    private String arrival;
     private boolean validated;
     private float price;
-    private int train;
+    private String departureTime;
 
     public Ticket(JSONObject t) throws JSONException {
-        this.start = t.get("start").toString();
-        this.end = t.get("end").toString();
+        this.departure = t.get("departure").toString();
+        this.arrival = t.get("arrival").toString();
         this.validated = (boolean) t.get("validated");
         this.price = Float.valueOf(t.get("price").toString());
-        this.train = (Integer) t.get("train");
         this.id = (Integer) t.get("id");
+        this.departureTime =  t.get("departureTime").toString();
 
     }
     public int getId() {
         return id;
     }
 
-    public String getStart() {
-        return start;
+    public String getDeparture() {
+        return departure;
     }
 
 
-    public String getEnd() {
-        return end;
+    public String getArrival() {
+        return arrival;
     }
 
 
@@ -50,8 +50,8 @@ public class Ticket implements Serializable {
     }
 
 
-    public Integer getTrain() {
-        return train;
+    public String getDepartureTime() {
+        return departureTime;
     }
 
 

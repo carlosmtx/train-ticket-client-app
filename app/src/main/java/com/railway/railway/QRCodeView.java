@@ -22,11 +22,11 @@ public class QRCodeView extends View {
     }
 
     private String generateQRCodeString(){
-        return this.ticket.getStart()
-                +";"+this.ticket.getEnd()
+        return this.ticket.getDeparture()
+                +";"+this.ticket.getArrival()
                 +";"+this.ticket.getValidated()
                 +";"+this.ticket.getId()
-                +";"+this.ticket.getTrain();
+                +";"+this.ticket.getDepartureTime();
     }
 
     @Override

@@ -22,11 +22,11 @@ public class TicketQRCodeActivity extends AppCompatActivity {
         Ticket ticket = (Ticket)getIntent().getSerializableExtra("ticket");
         TextView ticketInfo = (TextView)findViewById(R.id.ticketqrcode_lbl_ticket);
         String infoTxt = "From: "
-                + ticket.getStart() + "\n"
+                + ticket.getDeparture() + "\n"
                 + "To: "
-                + ticket.getEnd() + "\n"
+                + ticket.getArrival() + "\n"
                 + ticket.getPrice() + "€\n"
-                + "Train number: " + ticket.getTrain();
+                + "At: " + ticket.getDepartureTime();
 
         ticketInfo.setText(infoTxt);
 
