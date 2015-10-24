@@ -32,7 +32,6 @@ public class TicketQRCodeActivity extends AppCompatActivity {
         ticketInfo.setText(infoTxt);
         Bitmap myBitmap = QRCode.from(infoTxt.replace('\n',',')).bitmap();
         ImageView myImage = (ImageView) findViewById(R.id.ticketqrcode_qrcode_image);
-//        myImage.invalidate();
         myImage.setImageBitmap(myBitmap);
     }
 
