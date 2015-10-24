@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.railway.railway.DI;
 import com.railway.railway.activity.PurchaseSelectStationsActivity;
 import com.railway.railway.business.api.entity.Railway;
 import com.railway.railway.business.api.request.RailwayInfoRequest;
@@ -53,8 +54,9 @@ public class PurchaseActivityGetStationsTask extends AsyncTask<Void, Void, JSONO
                 Railway r = new Railway(result);
                 ((PurchaseSelectStationsActivity) activity).addDepartureOptions(r.getStations());
                 ((PurchaseSelectStationsActivity) activity).addArrivalOptions(r.getStations());
-                // Insert into Storage
-                // Fill Spinners
+
+                // Filling Railway Information singleton
+                DI.get().provideStorage().setSchedule(r);
 
             } catch (JSONException e) {
                 e.printStackTrace();

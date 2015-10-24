@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.railway.railway.R;
 
@@ -17,6 +18,9 @@ public class PurchaseSelectScheduleActivity extends AppCompatActivity {
         // Stations passed from previous activity
         String departureStation = getIntent().getStringExtra("departure");
         String arrivalStation = getIntent().getStringExtra("arrival");
+
+        TextView hello = (TextView)findViewById(R.id.purchase_lbl_hello);
+        hello.setText(departureStation + " to " + arrivalStation);
 
     }
 
