@@ -1,6 +1,7 @@
 package com.railway.railway.business.api.storage;
 
 import com.railway.railway.business.api.entity.Railway;
+import com.railway.railway.business.api.entity.User;
 
 import java.util.HashMap;
 
@@ -11,6 +12,7 @@ import java.util.HashMap;
 public class RailwayStorage implements Storage {
     private HashMap<String,String> storage;
     private Railway schedule;
+    private User user;
 
     public RailwayStorage() {
         this.storage = new HashMap<>();
@@ -34,5 +36,15 @@ public class RailwayStorage implements Storage {
     @Override
     public void setSchedule(Railway schedule) {
         this.schedule = schedule;
+    }
+
+    @Override
+    public User getUser() {
+        return this.user;
+    }
+
+    @Override
+    public void setUser(User user) {
+        this.user = user;
     }
 }

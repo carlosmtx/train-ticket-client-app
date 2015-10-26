@@ -1,6 +1,7 @@
 package com.railway.railway.business.api.storage;
 
 import com.railway.railway.business.api.entity.Railway;
+import com.railway.railway.business.api.entity.User;
 
 /**
  * Created by cteixeira on 21-10-2015.
@@ -13,5 +14,8 @@ public interface Storage {
 
     Railway getSchedule();
     void setSchedule(Railway schedule);
+
+    User getUser();
+    void setUser(User user);
 
 }

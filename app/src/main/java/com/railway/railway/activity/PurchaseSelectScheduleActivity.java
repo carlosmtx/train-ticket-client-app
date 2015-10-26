@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.railway.railway.DI;
 import com.railway.railway.R;
+import com.railway.railway.activity.listeners.PurchaseActivityScheduleClick;
 
 import java.util.ArrayList;
 
@@ -41,7 +42,7 @@ public class PurchaseSelectScheduleActivity extends AppCompatActivity {
             btn_time.setId(i);
             btn_time.setGravity(Gravity.LEFT);
             btn_time.setText(timetable.get(i));
-            //btn_time.setOnClickListener(new PurchaseActivityScheduleClick(this, timetable.get(i)));
+            btn_time.setOnClickListener(new PurchaseActivityScheduleClick(departure, arrival, timetable.get(i)));
             container.addView(btn_time);
         }
 

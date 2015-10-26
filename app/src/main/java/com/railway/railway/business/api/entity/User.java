@@ -9,6 +9,11 @@ import org.json.JSONObject;
 public class User {
     public String token;
     public String email;
+
+    private String cardType;
+    private String cardNumber;
+    private String cardExpiration;
+
     //TODO: Add extra user fields to this entity
     protected JSONObject response;
 
@@ -16,6 +21,20 @@ public class User {
         this.response = response;
         this.token = response.get("token").toString();
         this.email = response.get("email").toString();
+        this.cardType = response.get("cardType").toString();
+        this.cardNumber = response.get("cardNumber").toString();
+        this.cardExpiration = response.get("cardExpiration").toString();
     }
 
+    public String getCardType() {
+        return cardType;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public String getCardExpiration() {
+        return cardExpiration;
+    }
 }

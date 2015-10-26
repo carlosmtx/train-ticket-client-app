@@ -5,4 +5,9 @@
     <string name="purchase_lbl_departure">From:</string>
     <string name="purchase_lbl_arrival">To:</string>
     <string name="purchase_btn_proceed">Search Schedule</string>
+
+    <string name="purchase_confirm_dialog_title">Confirm your purchase</string>
+    <string name="purchase_confirm_dialog_positive">Purchase</string>
+    <string name="purchase_confirm_dialog_negative">Cancel</string>
+
 </resources>
