@@ -46,7 +46,7 @@ public class UserActivity extends AppCompatActivity {
         for(int i = 0; i < activeTickets.length(); i++){
             Ticket currentTicket = new Ticket(activeTickets.getJSONObject(i));
 
-            final Button btn_ticket = new Button(this);
+            Button btn_ticket = new Button(this);
             btn_ticket.setId(i);
             btn_ticket.setGravity(Gravity.LEFT);
             btn_ticket.setText(

@@ -31,7 +31,7 @@ public class Railway {
 
         if (connectionsInfo != null) {
             for (int i=0;i<connectionsInfo.names().length();i++){
-                JSONObject currConn = connectionsInfo.getJSONObject(connectionsInfo.names().get(1).toString());
+                JSONObject currConn = connectionsInfo.getJSONObject(connectionsInfo.names().get(i).toString());
                 Connection currentConn = new Connection(currConn);
                 this.connections.add(currentConn);
             }
@@ -40,5 +40,14 @@ public class Railway {
 
     public ArrayList<String> getStations() {
         return stations;
+    }
+
+    public ArrayList<String> getTimetable(String from, String to){
+        for(int i=0; i < connections.size(); i++){
+            if(connections.get(i).getDepartureStation().equals(from) && connections.get(i).getArrivalStation().equals(to)){
+                return connections.get(i).getSchedule();
+            }
+        }
+        return new ArrayList<>();
     }
 }

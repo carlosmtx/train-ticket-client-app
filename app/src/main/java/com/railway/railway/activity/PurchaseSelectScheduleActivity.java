@@ -2,11 +2,17 @@ package com.railway.railway.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.railway.railway.DI;
 import com.railway.railway.R;
+
+import java.util.ArrayList;
 
 public class PurchaseSelectScheduleActivity extends AppCompatActivity {
 
@@ -19,8 +25,25 @@ public class PurchaseSelectScheduleActivity extends AppCompatActivity {
         String departureStation = getIntent().getStringExtra("departure");
         String arrivalStation = getIntent().getStringExtra("arrival");
 
-        TextView hello = (TextView)findViewById(R.id.purchase_lbl_hello);
+        TextView hello = (TextView)findViewById(R.id.purchase_lbl_from_to);
         hello.setText(departureStation + " to " + arrivalStation);
+
+        fillScheduleOptions(departureStation,arrivalStation);
+
+    }
+
+    private void fillScheduleOptions(String departure,String arrival) {
+        LinearLayout container = (LinearLayout)findViewById(R.id.purchase_timetable_container);
+
+        ArrayList<String> timetable = DI.get().provideStorage().getSchedule().getTimetable(departure,arrival);
+        for(int i=0; i < timetable.size(); i++){
+            Button btn_time = new Button(this);
+            btn_time.setId(i);
+            btn_time.setGravity(Gravity.LEFT);
+            btn_time.setText(timetable.get(i));
+            //btn_time.setOnClickListener(new PurchaseActivityScheduleClick(this, timetable.get(i)));
+            container.addView(btn_time);
+        }
 
     }
 
