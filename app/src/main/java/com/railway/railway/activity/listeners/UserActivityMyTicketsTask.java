@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.railway.railway.DI;
 import com.railway.railway.activity.UserActivity;
 import com.railway.railway.business.api.request.MyTicketsRequest;
 
@@ -21,15 +22,17 @@ public class UserActivityMyTicketsTask extends AsyncTask<Void, Void, JSONObject>
     private Activity activity;
     private MyTicketsRequest request;
     private JSONObject result;
+    private boolean forceCall;
 
-    public UserActivityMyTicketsTask(Activity activity) {
+    public UserActivityMyTicketsTask(Activity activity, boolean forceCall) {
         this.activity = activity;
+        this.forceCall = forceCall;
     }
 
     @Override
     protected JSONObject doInBackground(Void... params) {
         try {
-            this.request = new MyTicketsRequest();
+            this.request = new MyTicketsRequest(forceCall);
             result = this.request.getResponse();
             return result;
         } catch (JSONException e) {

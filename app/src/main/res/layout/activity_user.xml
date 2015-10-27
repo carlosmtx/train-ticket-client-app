@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     android:id="@+id/user_container_layout"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="700px">
+        android:layout_height="400sp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true">
         <LinearLayout
             android:id="@+id/user_tickets_container"
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             xmlns:android="http://schemas.android.com/apk/res/android">
 
             <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -27,7 +29,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hi "
+                    android:text="@string/user_signed_in"
                     android:id="@+id/user_lbl_signed"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -38,14 +40,17 @@
 
         </LinearLayout>
 
+
+
     </ScrollView>
 
     <LinearLayout
         android:id="@+id/user_layout_bottom_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:orientation="vertical" >
+        android:layout_centerHorizontal="true" >
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,4 +58,5 @@
             android:id="@+id/user_btn_purchase"/>
 
     </LinearLayout>
+
 </RelativeLayout>

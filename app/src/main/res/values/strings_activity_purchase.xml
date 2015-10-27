@@ -10,4 +10,9 @@
     <string name="purchase_confirm_dialog_positive">Purchase</string>
     <string name="purchase_confirm_dialog_negative">Cancel</string>
 
+    <string name="purchase_success">Your ticket was bought with success!</string>
+    <string name="purchase_error">Please check your Credit Card information and try again.</string>
+
+
+
 </resources>

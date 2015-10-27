@@ -1,9 +1,12 @@
 package com.railway.railway.activity.listeners;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.railway.railway.R;
+import com.railway.railway.activity.UserActivity;
 import com.railway.railway.business.api.request.PurchaseTicketRequest;
 import com.railway.railway.business.api.request.PurchaseTicketRequestData;
 
@@ -41,13 +44,15 @@ public class PurchaseActivityPurchaseTicketTask extends AsyncTask<Void, Void, JS
 
     @Override
     protected void onPostExecute(JSONObject result){
-        //TODO: intent. mudar de activity
         Toast toast;
         if(result == null){
-            toast = Toast.makeText(this.activity,result.toString(),Toast.LENGTH_LONG);
+            toast = Toast.makeText(this.activity, R.string.purchase_error, Toast.LENGTH_SHORT);
             toast.show();
         } else {
-            toast = Toast.makeText(this.activity,result.toString(),Toast.LENGTH_LONG);
+            toast = Toast.makeText(this.activity, R.string.purchase_success, Toast.LENGTH_SHORT);
+            Intent intent = new Intent(this.activity, UserActivity.class);
+            intent.putExtra("forceCall", "true");
+            this.activity.startActivity(intent);
             toast.show();
         }
     }

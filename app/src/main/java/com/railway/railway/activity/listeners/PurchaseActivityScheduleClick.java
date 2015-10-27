@@ -56,9 +56,5 @@ public class PurchaseActivityScheduleClick implements View.OnClickListener {
         AlertDialog dialog = builder.create();
         dialog.show();
 
-        //Intent intent = new Intent(activity, PurchaseSelectScheduleActivity.class);
-        //intent.putExtra("departure", activity.getSelectedDeparture());
-        //intent.putExtra("arrival", activity.getSelectedArrival());
-        //activity.startActivity(intent);
     }
 }

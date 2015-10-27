@@ -8,7 +8,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.railway.railway.DI;
 import com.railway.railway.R;
 import com.railway.railway.activity.listeners.UserActivityMyTicketsTask;
 import com.railway.railway.activity.listeners.UserActivityOnBackPressed;
@@ -24,9 +26,6 @@ import java.util.ArrayList;
 
 public class UserActivity extends AppCompatActivity {
 
-    //HashMap<Button,JSONObject> buttonsMap = new HashMap<>();
-    ArrayList<Button> buttonsMap = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +33,22 @@ public class UserActivity extends AppCompatActivity {
         Button purchaseButton = (Button)findViewById(R.id.user_btn_purchase);
         purchaseButton.setOnClickListener(new UserActivityPurchaseClick());
 
-        // Ao retornar para a Activity ele volta a fazer a chamada. meh
-        new UserActivityMyTicketsTask(this).execute();
+        TextView helloText = (TextView) findViewById(R.id.user_lbl_username);
+        helloText.setText(DI.get().provideStorage().getUser().email);
+
+        // Cache de resultado a não ser que seja preciso
+        boolean forceCall = false;
+        if(getIntent().hasExtra("forceCall")) forceCall=true;
+        new UserActivityMyTicketsTask(this, forceCall).execute();
     }
+
+    /*
+    @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
+        new UserActivityMyTicketsTask(this, false).execute();
+    }
+    */
 
     public void fillTicketsContainer(JSONObject tickets) throws JSONException {
         LinearLayout ticketsContainer = (LinearLayout)findViewById(R.id.user_tickets_container);
@@ -56,7 +68,6 @@ public class UserActivity extends AppCompatActivity {
                     + currentTicket.getArrival() + "\n"
                     + currentTicket.getPrice() + "€"
             );
-            buttonsMap.add(btn_ticket);
             btn_ticket.setOnClickListener(new UserActivityTicketClick(this, currentTicket));
             ticketsContainer.addView(btn_ticket);
         }

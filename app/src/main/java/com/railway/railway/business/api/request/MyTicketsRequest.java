@@ -20,8 +20,9 @@ public class MyTicketsRequest implements APIRequest{
     public final RequestFuture<JSONObject> future ;
     private final JsonObjectRequest request;
     private final API api;
+    private boolean forceCall;
 
-    public MyTicketsRequest() throws JSONException {
+    public MyTicketsRequest(boolean forceCall) throws JSONException {
         JSONObject data1 = new JSONObject()
                 .put("token", DI.get().provideStorage().getToken());
 
@@ -36,6 +37,7 @@ public class MyTicketsRequest implements APIRequest{
                 future
         );
         api = DI.get().provideRequestAPI();
+        this.forceCall = forceCall;
     }
 
     @Override
@@ -44,9 +46,13 @@ public class MyTicketsRequest implements APIRequest{
     }
 
     public JSONObject getResponse() throws ExecutionException, InterruptedException, TimeoutException, JSONException {
-        api.request(this);
-        JSONObject response = future.get();
-        return response;
+        if(this.forceCall || DI.get().provideStorage().getCachedResult("MyTicketsRequest") == null){
+            api.request(this);
+            JSONObject response = future.get();
+            DI.get().provideStorage().cacheResult("MyTicketsRequest", response);
+            return response;
+        }
+        else return DI.get().provideStorage().getCachedResult("MyTicketsRequest");
     }
 }
 

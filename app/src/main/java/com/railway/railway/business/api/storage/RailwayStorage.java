@@ -3,6 +3,8 @@ package com.railway.railway.business.api.storage;
 import com.railway.railway.business.api.entity.Railway;
 import com.railway.railway.business.api.entity.User;
 
+import org.json.JSONObject;
+
 import java.util.HashMap;
 
 /**
@@ -11,11 +13,14 @@ import java.util.HashMap;
  */
 public class RailwayStorage implements Storage {
     private HashMap<String,String> storage;
+    private HashMap<String,JSONObject> responseStorage;
+
     private Railway schedule;
     private User user;
 
     public RailwayStorage() {
         this.storage = new HashMap<>();
+        this.responseStorage = new HashMap<>();
     }
 
     @Override
@@ -47,4 +52,16 @@ public class RailwayStorage implements Storage {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public void cacheResult(String call, JSONObject response){
+        responseStorage.put(call, response);
+    }
+
+    @Override
+    public JSONObject getCachedResult(String call) {
+        return responseStorage.get(call);
+    }
+
+
 }

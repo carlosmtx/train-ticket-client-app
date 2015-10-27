@@ -41,8 +41,15 @@ public class RailwayInfoRequest implements APIRequest{
     }
 
     public JSONObject getResponse() throws ExecutionException, InterruptedException, TimeoutException, JSONException {
-        api.request(this);
-        JSONObject response = future.get();
-        return response;
+        if(DI.get().provideStorage().getCachedResult("RailwayInfoRequest") == null){
+            api.request(this);
+            JSONObject response = future.get();
+            DI.get().provideStorage().cacheResult("RailwayInfoRequest", response);
+            return response;
+        }
+        else{
+            return DI.get().provideStorage().getCachedResult("RailwayInfoRequest");
+        }
+
     }
 }
