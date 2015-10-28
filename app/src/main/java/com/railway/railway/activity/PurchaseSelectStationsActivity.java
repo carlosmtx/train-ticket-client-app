@@ -1,19 +1,23 @@
 package com.railway.railway.activity;
 
-import android.content.Intent;
+import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.railway.railway.R;
+import com.railway.railway.activity.fragments.DatePickerFragment;
 import com.railway.railway.activity.listeners.PurchaseActivityGetStationsTask;
 import com.railway.railway.activity.listeners.PurchaseActivitySearchClick;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class PurchaseSelectStationsActivity extends AppCompatActivity {
@@ -27,6 +31,22 @@ public class PurchaseSelectStationsActivity extends AppCompatActivity {
         purchaseButton.setOnClickListener(new PurchaseActivitySearchClick());
         //purchase_btn_search
         new PurchaseActivityGetStationsTask(this).execute();
+
+        Button mPickDate = (Button) findViewById(R.id.purchase_btn_pick_date);
+        mPickDate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                DialogFragment newFragment = new DatePickerFragment();
+                newFragment.show(getFragmentManager(),"datePicker");
+            }
+        });
+
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        TextView dateTV = (TextView) findViewById(R.id.purchase_lbl_date);
+        dateTV.setText(year + "/" + month + "/" + day);
+
     }
 
     public void addDepartureOptions(ArrayList<String> stations){
@@ -63,6 +83,12 @@ public class PurchaseSelectStationsActivity extends AppCompatActivity {
         Spinner departureSpinner = (Spinner) findViewById(R.id.purchase_departure_spinner);
         return departureSpinner.getSelectedItem().toString();
     }
+
+    public String getSelectedDate(){
+        TextView dateTV = (TextView) findViewById(R.id.purchase_lbl_date);
+        return dateTV.getText().toString();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

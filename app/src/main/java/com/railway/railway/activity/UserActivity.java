@@ -42,14 +42,6 @@ public class UserActivity extends AppCompatActivity {
         new UserActivityMyTicketsTask(this, forceCall).execute();
     }
 
-    /*
-    @Override
-    public void onResume() {
-        super.onResume();  // Always call the superclass method first
-        new UserActivityMyTicketsTask(this, false).execute();
-    }
-    */
-
     public void fillTicketsContainer(JSONObject tickets) throws JSONException {
         LinearLayout ticketsContainer = (LinearLayout)findViewById(R.id.user_tickets_container);
 

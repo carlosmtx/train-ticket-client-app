@@ -18,11 +18,15 @@ public class PurchaseActivityScheduleClick implements View.OnClickListener {
     private String departure;
     private String arrival;
     private String scheduleSelected;
+    private String date;
+    private float price;
 
-    public PurchaseActivityScheduleClick(String dep, String arr, String scheduleSelected){
+    public PurchaseActivityScheduleClick(String dep, String arr, String date, String scheduleSelected, float price){
         this.departure = dep;
         this.arrival = arr;
+        this.date = date;
         this.scheduleSelected = scheduleSelected;
+        this.price = price;
     }
 
     @Override
@@ -36,14 +40,15 @@ public class PurchaseActivityScheduleClick implements View.OnClickListener {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.purchase_confirm_dialog_title);
         builder.setMessage("You are going to purchase a ticket to travel:\n" +
-                        "- From " + this.departure + "\n" +
-                        "- To " + this.arrival + "\n" +
-                        "- Leaving at " + this.scheduleSelected + "\n" +
-                        "With your credit card ending in " + cardNumber.substring(cardNumber.length() - 3) + "\n" +
+                        "- From " + this.departure + " to " + this.arrival + "\n" +
+                        "- Departure: " + this.date + " at " + this.scheduleSelected + "\n" +
+                        "- Price: " + this.price + "€\n" +
+                        "The payment will be executed with your credit card ending in " +
+                        cardNumber.substring(cardNumber.length() - 3) + "\n" +
                         "Are you sure you want to proceed?"
         );
 
-        PurchaseTicketRequestData data = new PurchaseTicketRequestData(arrival,departure);
+        PurchaseTicketRequestData data = new PurchaseTicketRequestData(arrival,departure,date,scheduleSelected);
 
         builder.setPositiveButton(R.string.purchase_confirm_dialog_positive, new PurchaseActivityDialogSuccessClick(activity,data));
         builder.setNegativeButton(R.string.purchase_confirm_dialog_negative, new DialogInterface.OnClickListener() {

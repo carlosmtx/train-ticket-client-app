@@ -7,10 +7,14 @@ public class PurchaseTicketRequestData {
 
     String arrival;
     String departure;
+    String date;
+    String time;
 
-    public PurchaseTicketRequestData(String arrival, String departure) {
+    public PurchaseTicketRequestData(String arrival, String departure, String date, String time) {
         this.arrival = arrival;
         this.departure = departure;
+        this.date = date;
+        this.time = time;
     }
 
     public String getArrival() {
@@ -19,5 +23,14 @@ public class PurchaseTicketRequestData {
 
     public String getDeparture() {
         return departure;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+
+    public String getTime() {
+        return time;
     }
 }

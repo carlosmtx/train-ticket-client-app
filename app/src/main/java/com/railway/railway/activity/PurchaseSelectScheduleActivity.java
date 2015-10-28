@@ -16,6 +16,7 @@ import com.railway.railway.activity.listeners.PurchaseActivityScheduleClick;
 import java.util.ArrayList;
 
 public class PurchaseSelectScheduleActivity extends AppCompatActivity {
+    float fixedPrice = (float) 10.30;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +26,17 @@ public class PurchaseSelectScheduleActivity extends AppCompatActivity {
         // Stations passed from previous activity
         String departureStation = getIntent().getStringExtra("departure");
         String arrivalStation = getIntent().getStringExtra("arrival");
+        String date = getIntent().getStringExtra("date");
+
 
         TextView hello = (TextView)findViewById(R.id.purchase_lbl_from_to);
-        hello.setText(departureStation + " to " + arrivalStation);
+        hello.setText(departureStation + " to " + arrivalStation + " on " + date);
 
-        fillScheduleOptions(departureStation,arrivalStation);
+        fillScheduleOptions(departureStation,arrivalStation,date);
 
     }
 
-    private void fillScheduleOptions(String departure,String arrival) {
+    private void fillScheduleOptions(String departure,String arrival, String date) {
         LinearLayout container = (LinearLayout)findViewById(R.id.purchase_timetable_container);
 
         ArrayList<String> timetable = DI.get().provideStorage().getSchedule().getTimetable(departure,arrival);
@@ -42,7 +45,7 @@ public class PurchaseSelectScheduleActivity extends AppCompatActivity {
             btn_time.setId(i);
             btn_time.setGravity(Gravity.LEFT);
             btn_time.setText(timetable.get(i));
-            btn_time.setOnClickListener(new PurchaseActivityScheduleClick(departure, arrival, timetable.get(i)));
+            btn_time.setOnClickListener(new PurchaseActivityScheduleClick(departure, arrival, date, timetable.get(i), fixedPrice));
             container.addView(btn_time);
         }
 

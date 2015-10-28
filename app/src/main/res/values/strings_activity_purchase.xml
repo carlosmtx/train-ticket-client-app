@@ -4,7 +4,9 @@
 
     <string name="purchase_lbl_departure">From:</string>
     <string name="purchase_lbl_arrival">To:</string>
+    <string name="purchase_lbl_date_intro">On:</string>
     <string name="purchase_btn_proceed">Search Schedule</string>
+    <string name="purchase_btn_pick_date">Pick Date</string>
 
     <string name="purchase_confirm_dialog_title">Confirm your purchase</string>
     <string name="purchase_confirm_dialog_positive">Purchase</string>
@@ -12,7 +14,6 @@
 
     <string name="purchase_success">Your ticket was bought with success!</string>
     <string name="purchase_error">Please check your Credit Card information and try again.</string>
-
 
 
 </resources>

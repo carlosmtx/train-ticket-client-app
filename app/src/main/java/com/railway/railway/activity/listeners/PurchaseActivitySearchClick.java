@@ -18,6 +18,7 @@ public class PurchaseActivitySearchClick implements View.OnClickListener {
         Intent intent = new Intent(activity, PurchaseSelectScheduleActivity.class);
         intent.putExtra("departure", activity.getSelectedDeparture());
         intent.putExtra("arrival", activity.getSelectedArrival());
+        intent.putExtra("date",activity.getSelectedDate());
         activity.startActivity(intent);
     }
 }
