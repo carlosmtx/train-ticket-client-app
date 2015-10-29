@@ -16,14 +16,18 @@ public class Ticket implements Serializable {
     private boolean validated;
     private float price;
     private String departureTime;
+    private String departureDate;
+
 
     public Ticket(JSONObject t) throws JSONException {
+        this.id = (Integer) t.get("id");
         this.departure = t.get("departure").toString();
         this.arrival = t.get("arrival").toString();
         this.validated = (boolean) t.get("validated");
         this.price = Float.valueOf(t.get("price").toString());
-        this.id = (Integer) t.get("id");
         this.departureTime =  t.get("departureTime").toString();
+        this.departureDate =  t.get("departureDate").toString();
+
 
     }
     public int getId() {
@@ -33,7 +37,6 @@ public class Ticket implements Serializable {
     public String getDeparture() {
         return departure;
     }
-
 
     public String getArrival() {
         return arrival;
@@ -55,4 +58,7 @@ public class Ticket implements Serializable {
     }
 
 
+    public String getDepartureDate() {
+        return departureDate;
+    }
 }

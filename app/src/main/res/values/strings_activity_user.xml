@@ -2,5 +2,5 @@
     <string name="title_activity_user">Tickets</string>
     <string name="user_title">My Tickets</string>
     <string name="user_btn_purchase">Purchase Ticket</string>
-    <string name="user_signed_in">"Signed in as "</string>
+    <string name="user_signed_in">"Welcome "</string>
 </resources>

@@ -15,7 +15,7 @@ import com.railway.railway.activity.listeners.PurchaseActivityScheduleClick;
 
 import java.util.ArrayList;
 
-public class PurchaseSelectScheduleActivity extends AppCompatActivity {
+public class PurchaseSelectScheduleActivity extends MenuActivity {
     float fixedPrice = (float) 10.30;
 
     @Override
@@ -32,44 +32,25 @@ public class PurchaseSelectScheduleActivity extends AppCompatActivity {
         TextView hello = (TextView)findViewById(R.id.purchase_lbl_from_to);
         hello.setText(departureStation + " to " + arrivalStation + " on " + date);
 
-        fillScheduleOptions(departureStation,arrivalStation,date);
+        fillScheduleOptions(departureStation, arrivalStation, date);
 
     }
 
     private void fillScheduleOptions(String departure,String arrival, String date) {
         LinearLayout container = (LinearLayout)findViewById(R.id.purchase_timetable_container);
 
-        ArrayList<String> timetable = DI.get().provideStorage().getSchedule().getTimetable(departure,arrival);
+        ArrayList<String> timetable = DI.get().provideStorage().getSchedule().getTimetable(departure, arrival);
+        double price = DI.get().provideStorage().getSchedule().getPrice(departure,arrival);
+
         for(int i=0; i < timetable.size(); i++){
             Button btn_time = new Button(this);
             btn_time.setId(i);
             btn_time.setGravity(Gravity.LEFT);
             btn_time.setText(timetable.get(i));
-            btn_time.setOnClickListener(new PurchaseActivityScheduleClick(departure, arrival, date, timetable.get(i), fixedPrice));
+            btn_time.setOnClickListener(new PurchaseActivityScheduleClick(departure, arrival, date, timetable.get(i), price));
             container.addView(btn_time);
         }
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_purchase_select_schedule, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

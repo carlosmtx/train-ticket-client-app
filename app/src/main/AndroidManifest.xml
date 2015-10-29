@@ -51,6 +51,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.railway.railway.activity.PurchaseSelectStationsActivity" />
         </activity>
+        <activity
+            android:name=".activity.UsedTicketsActivity"
+            android:label="@string/title_activity_used_tickets"
+            android:parentActivityName=".activity.UserActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.railway.railway.activity.UserActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AccountActivity"
+            android:label="@string/title_activity_account" >
+        </activity>
     </application>
 
 </manifest>

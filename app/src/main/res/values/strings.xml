@@ -10,6 +10,7 @@
         <item>Visa</item>
         <item>American Express</item>
     </string-array>
+
     <string name="title_activity_purchase_select_stations">Purchase</string>
     <string name="title_activity_purchase_select_schedule">Purchase</string>
 </resources>

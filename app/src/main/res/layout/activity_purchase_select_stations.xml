@@ -56,7 +56,7 @@
 
     <TextView
         android:id="@+id/purchase_lbl_date"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/purchase_lbl_date_intro"
         android:textSize="8pt"
@@ -64,13 +64,13 @@
         android:layout_marginLeft="15sp"
         android:text="29/19/2915" />
 
-    <Button
+    <ImageButton
         android:id="@+id/purchase_btn_pick_date"
-        android:layout_width="200sp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20sp"
-        android:layout_below="@+id/purchase_lbl_date"
+        android:layout_toRightOf="@+id/purchase_lbl_date"
+        android:layout_below="@+id/purchase_lbl_date_intro"
+        android:background="@drawable/ic_play_light"
         android:text="@string/purchase_btn_pick_date" />
 
 

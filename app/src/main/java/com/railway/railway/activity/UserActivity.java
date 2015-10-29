@@ -1,11 +1,7 @@
 package com.railway.railway.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,9 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
-public class UserActivity extends AppCompatActivity {
+public class UserActivity extends MenuActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,38 +49,17 @@ public class UserActivity extends AppCompatActivity {
             btn_ticket.setGravity(Gravity.LEFT);
             btn_ticket.setText(
                     "From: "
-                    + currentTicket.getDeparture() + "\n"
-                    + "To: "
-                    + currentTicket.getArrival() + "\n"
-                    + currentTicket.getPrice() + "€"
+                            + currentTicket.getDeparture() + "\n"
+                            + "To: "
+                            + currentTicket.getArrival() + "\n"
+                            + currentTicket.getDepartureTime() + " "
+                            + currentTicket.getDepartureDate()
             );
             btn_ticket.setOnClickListener(new UserActivityTicketClick(this, currentTicket));
             ticketsContainer.addView(btn_ticket);
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        MenuInflater inflater = getMenuInflater(); //from activity
-        inflater.inflate(R.menu.menu_user, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public void onBackPressed() {

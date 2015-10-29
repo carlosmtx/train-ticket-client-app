@@ -14,7 +14,7 @@ import com.railway.railway.business.api.entity.Ticket;
 
 import net.glxn.qrgen.android.QRCode;
 
-public class TicketQRCodeActivity extends AppCompatActivity {
+public class TicketQRCodeActivity extends MenuActivity {
 
 
     @Override
@@ -24,13 +24,15 @@ public class TicketQRCodeActivity extends AppCompatActivity {
 
         Ticket ticket = (Ticket)getIntent().getSerializableExtra("ticket");
         TextView ticketInfo = (TextView)findViewById(R.id.ticketqrcode_lbl_ticket);
-        String infoTxt = "From: "
+        String infoTxt = ""
+                + "Price: "+ ticket.getPrice() + "€\n"
+                + "From: "
                 + ticket.getDeparture() + "\n"
                 + "To: "
                 + ticket.getArrival() + "\n"
-                + ticket.getPrice() + "€\n"
-                + "At: " + ticket.getDepartureTime();
+                + "Date: " + ticket.getDepartureDate() + " at " + ticket.getDepartureTime();
         ticketInfo.setText(infoTxt);
+
         Bitmap myBitmap = QRCode.from(infoTxt.replace('\n',',')).bitmap();
         ImageView myImage = (ImageView) findViewById(R.id.ticketqrcode_qrcode_image);
         myImage.setImageBitmap(myBitmap);

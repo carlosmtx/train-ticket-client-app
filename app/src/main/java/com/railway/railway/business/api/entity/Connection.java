@@ -13,12 +13,15 @@ public class Connection {
     private String departureStation;
     private String arrivalStation;
     private int length;
+    private double price;
     private ArrayList<String> schedule;
+    private double price_length_relation = 0.3;
 
     public Connection(JSONObject con) throws JSONException {
         this.departureStation = con.get("dStation").toString();
         this.arrivalStation = con.get("aStation").toString();
         this.length = (int) con.get("length");
+        this.price = length * price_length_relation;
 
         this.schedule = new ArrayList<>();
         JSONArray scheduleInfo = con.getJSONArray("schedule");
@@ -44,6 +47,10 @@ public class Connection {
 
     public ArrayList<String> getSchedule() {
         return this.schedule;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
 }

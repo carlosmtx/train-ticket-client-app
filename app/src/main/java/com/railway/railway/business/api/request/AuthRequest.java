@@ -41,6 +41,7 @@ public class AuthRequest implements APIRequest {
         User user = new User(future.get());
         DI.get().provideStorage().setToken(user.token);
         DI.get().provideStorage().setUser(user);
+
         //DI.get().provideStorage().setToken(user.token);
         return user;
     }

@@ -12,6 +12,7 @@ public class LoginActivityLoginClick implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         LoginActivity activity= (LoginActivity) view.getContext();
+        activity.disableButtons();
         TextView emailInput= (TextView)activity.findViewById(R.id.register_email);
         TextView passwInput= (TextView)activity.findViewById(R.id.register_password);
 

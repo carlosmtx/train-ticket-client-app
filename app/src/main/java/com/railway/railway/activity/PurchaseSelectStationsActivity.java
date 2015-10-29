@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class PurchaseSelectStationsActivity extends AppCompatActivity {
+public class PurchaseSelectStationsActivity extends MenuActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class PurchaseSelectStationsActivity extends AppCompatActivity {
         //purchase_btn_search
         new PurchaseActivityGetStationsTask(this).execute();
 
-        Button mPickDate = (Button) findViewById(R.id.purchase_btn_pick_date);
+        ImageButton mPickDate = (ImageButton) findViewById(R.id.purchase_btn_pick_date);
         mPickDate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 DialogFragment newFragment = new DatePickerFragment();
@@ -89,25 +90,4 @@ public class PurchaseSelectStationsActivity extends AppCompatActivity {
         return dateTV.getText().toString();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_purchase_select_stations, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

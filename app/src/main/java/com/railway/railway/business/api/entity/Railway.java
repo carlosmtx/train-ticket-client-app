@@ -50,4 +50,14 @@ public class Railway {
         }
         return new ArrayList<>();
     }
+
+    public double getPrice(String from, String to){
+        for(int i=0; i < connections.size(); i++){
+            if(connections.get(i).getDepartureStation().equals(from) && connections.get(i).getArrivalStation().equals(to)){
+                return connections.get(i).getPrice();
+            }
+        }
+        return -1;
+    }
+
 }

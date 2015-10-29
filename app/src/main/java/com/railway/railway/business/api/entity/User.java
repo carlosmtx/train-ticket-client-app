@@ -9,21 +9,25 @@ import org.json.JSONObject;
 public class User {
     public String token;
     public String email;
+    public String name;
+    public String password;
 
     private String cardType;
     private String cardNumber;
     private String cardExpiration;
 
-    //TODO: Add extra user fields to this entity
     protected JSONObject response;
 
     public User(JSONObject response) throws JSONException {
         this.response = response;
-        this.token = response.get("token").toString();
+        this.email = response.get("email").toString();
+        this.name = (response.isNull("name")) ? "" : (response.get("name").toString()) ;
+        this.password = response.get("password").toString();
         this.email = response.get("email").toString();
         this.cardType = response.get("cardType").toString();
         this.cardNumber = response.get("cardNumber").toString();
         this.cardExpiration = response.get("cardExpiration").toString();
+        this.token = response.get("token").toString();
     }
 
     public String getCardType() {
@@ -36,5 +40,17 @@ public class User {
 
     public String getCardExpiration() {
         return cardExpiration;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

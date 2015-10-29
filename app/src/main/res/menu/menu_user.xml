@@ -4,9 +4,9 @@
         <item android:id="@+id/menu_used_tickets"
             android:icon="@android:drawable/ic_menu_edit"
             android:title="@string/menu_used_tickets" />
-        <item android:id="@+id/menu_user_account"
+        <item android:id="@+id/menu_user_schedule"
             android:icon="@android:drawable/ic_menu_edit"
-            android:title="@string/menu_user_account" />
+            android:title="@string/menu_user_schedule" />
         <item android:id="@+id/menu_user_settings"
             android:icon="@android:drawable/ic_menu_camera"
             android:title="@string/menu_user_settings" />

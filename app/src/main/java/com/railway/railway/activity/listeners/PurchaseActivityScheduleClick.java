@@ -19,9 +19,9 @@ public class PurchaseActivityScheduleClick implements View.OnClickListener {
     private String arrival;
     private String scheduleSelected;
     private String date;
-    private float price;
+    private double price;
 
-    public PurchaseActivityScheduleClick(String dep, String arr, String date, String scheduleSelected, float price){
+    public PurchaseActivityScheduleClick(String dep, String arr, String date, String scheduleSelected, double price){
         this.departure = dep;
         this.arrival = arr;
         this.date = date;

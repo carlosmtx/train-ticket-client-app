@@ -1,10 +1,12 @@
 package com.railway.railway.activity.listeners;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.railway.railway.activity.LoginActivity;
 import com.railway.railway.activity.UserActivity;
 import com.railway.railway.business.api.entity.User;
 import com.railway.railway.business.api.request.AuthRequest;
@@ -17,11 +19,11 @@ import java.util.concurrent.TimeoutException;
 
 
 public class LoginActivityLoginClickTask extends AsyncTask<String,Void,User> {
-    private Context context;
+    private Activity activity;
     private AuthRequestData data;
 
-    LoginActivityLoginClickTask(Context view,AuthRequestData data){
-        this.context = view;
+    LoginActivityLoginClickTask(Activity view,AuthRequestData data){
+        this.activity = view;
         this.data = data;
     }
 
@@ -40,13 +42,14 @@ public class LoginActivityLoginClickTask extends AsyncTask<String,Void,User> {
     @Override
     protected void onPostExecute(User response) {
         Toast toast;
+        ((LoginActivity) activity).enableButtons();
         if (response != null){
-            toast = Toast.makeText(context,"Logging in...",Toast.LENGTH_LONG);
-            Intent intent = new Intent(context, UserActivity.class);
+            toast = Toast.makeText(activity,"Logging in...",Toast.LENGTH_LONG);
+            Intent intent = new Intent(activity, UserActivity.class);
             intent.putExtra("forceCall", "true");
-            context.startActivity(intent);
+            activity.startActivity(intent);
         } else {
-            toast = Toast.makeText(context,"Please verify your credentials!",Toast.LENGTH_SHORT);
+            toast = Toast.makeText(activity,"Please verify your credentials!",Toast.LENGTH_SHORT);
         }
         toast.show();
     }
