@@ -17,6 +17,9 @@ public class Ticket implements Serializable {
     private float price;
     private String departureTime;
     private String departureDate;
+    private String publicKey;
+    private String signature;
+
 
 
     public Ticket(JSONObject t) throws JSONException {
@@ -28,6 +31,10 @@ public class Ticket implements Serializable {
         this.departureTime =  t.get("departureTime").toString();
         this.departureDate =  t.get("departureDate").toString();
 
+        if(t.has("publicKey") || t.has("signature")){
+            this.publicKey =  t.get("publicKey").toString();
+            this.signature = t.get("signature").toString();
+        }
 
     }
     public int getId() {
@@ -42,23 +49,29 @@ public class Ticket implements Serializable {
         return arrival;
     }
 
-
     public Boolean getValidated() {
         return validated;
     }
-
 
     public Float getPrice() {
         return price;
     }
 
-
     public String getDepartureTime() {
         return departureTime;
     }
 
-
     public String getDepartureDate() {
         return departureDate;
     }
+
+    public String getPublicKey() {
+        return publicKey;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+
 }

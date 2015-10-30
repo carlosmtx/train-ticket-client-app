@@ -1,5 +1,4 @@
 package com.railway.railway.activity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -13,6 +12,9 @@ import com.railway.railway.R;
 import com.railway.railway.business.api.entity.Ticket;
 
 import net.glxn.qrgen.android.QRCode;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class TicketQRCodeActivity extends MenuActivity {
 
@@ -33,7 +35,18 @@ public class TicketQRCodeActivity extends MenuActivity {
                 + "Date: " + ticket.getDepartureDate() + " at " + ticket.getDepartureTime();
         ticketInfo.setText(infoTxt);
 
-        Bitmap myBitmap = QRCode.from(infoTxt.replace('\n',',')).bitmap();
+        JSONObject qrCodeInfo = new JSONObject();
+        try {
+            qrCodeInfo.put("departure", ticket.getDeparture());
+            qrCodeInfo.put("arrival", ticket.getArrival());
+            qrCodeInfo.put("departureTime", ticket.getDepartureTime());
+            qrCodeInfo.put("departureDate", ticket.getDepartureDate());
+            qrCodeInfo.put("signature", ticket.getSignature());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Bitmap myBitmap = QRCode.from(qrCodeInfo.toString()).bitmap();
         ImageView myImage = (ImageView) findViewById(R.id.ticketqrcode_qrcode_image);
         myImage.setImageBitmap(myBitmap);
     }
