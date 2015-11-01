@@ -17,7 +17,6 @@ public class Ticket implements Serializable {
     private float price;
     private String departureTime;
     private String departureDate;
-    private String publicKey;
     private String signature;
 
 
@@ -30,11 +29,7 @@ public class Ticket implements Serializable {
         this.price = Float.valueOf(t.get("price").toString());
         this.departureTime =  t.get("departureTime").toString();
         this.departureDate =  t.get("departureDate").toString();
-
-        if(t.has("publicKey") || t.has("signature")){
-            this.publicKey =  t.get("publicKey").toString();
-            this.signature = t.get("signature").toString();
-        }
+        this.signature = t.get("signature").toString();
 
     }
     public int getId() {
@@ -63,10 +58,6 @@ public class Ticket implements Serializable {
 
     public String getDepartureDate() {
         return departureDate;
-    }
-
-    public String getPublicKey() {
-        return publicKey;
     }
 
     public String getSignature() {

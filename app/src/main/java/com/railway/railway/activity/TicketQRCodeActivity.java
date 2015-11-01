@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.railway.railway.DI;
 import com.railway.railway.R;
 import com.railway.railway.business.api.entity.Ticket;
 
@@ -26,27 +27,9 @@ public class TicketQRCodeActivity extends MenuActivity {
 
         Ticket ticket = (Ticket)getIntent().getSerializableExtra("ticket");
         TextView ticketInfo = (TextView)findViewById(R.id.ticketqrcode_lbl_ticket);
-        String infoTxt = ""
-                + "Price: "+ ticket.getPrice() + "€\n"
-                + "From: "
-                + ticket.getDeparture() + "\n"
-                + "To: "
-                + ticket.getArrival() + "\n"
-                + "Date: " + ticket.getDepartureDate() + " at " + ticket.getDepartureTime();
-        ticketInfo.setText(infoTxt);
+        String qrCodeInfo  = DI.get().provideGSON().toJson(ticket);
 
-        JSONObject qrCodeInfo = new JSONObject();
-        try {
-            qrCodeInfo.put("departure", ticket.getDeparture());
-            qrCodeInfo.put("arrival", ticket.getArrival());
-            qrCodeInfo.put("departureTime", ticket.getDepartureTime());
-            qrCodeInfo.put("departureDate", ticket.getDepartureDate());
-            qrCodeInfo.put("signature", ticket.getSignature());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        Bitmap myBitmap = QRCode.from(qrCodeInfo.toString()).bitmap();
+        Bitmap myBitmap = QRCode.from(qrCodeInfo).bitmap();
         ImageView myImage = (ImageView) findViewById(R.id.ticketqrcode_qrcode_image);
         myImage.setImageBitmap(myBitmap);
     }

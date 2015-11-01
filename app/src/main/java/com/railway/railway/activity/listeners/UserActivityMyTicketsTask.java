@@ -2,12 +2,17 @@ package com.railway.railway.activity.listeners;
 
 import android.app.Activity;
 import android.os.AsyncTask;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.railway.railway.DI;
+import com.railway.railway.R;
 import com.railway.railway.activity.UserActivity;
+import com.railway.railway.activity.adapter.TicketListAdapter;
+import com.railway.railway.business.api.entity.Ticket;
 import com.railway.railway.business.api.request.MyTicketsRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,51 +21,43 @@ import java.util.concurrent.TimeoutException;
 
 /**
  * Created by Leonel on 22/10/2015.
+ *
  */
 public class UserActivityMyTicketsTask extends AsyncTask<Void, Void, JSONObject> {
 
-    private Activity activity;
-    private MyTicketsRequest request;
-    private JSONObject result;
-    private boolean forceCall;
+    private UserActivity activity;
 
-    public UserActivityMyTicketsTask(Activity activity, boolean forceCall) {
-        this.activity = activity;
-        this.forceCall = forceCall;
+    public UserActivityMyTicketsTask(Activity activity){
+        this.activity = (UserActivity) activity;
     }
 
     @Override
     protected JSONObject doInBackground(Void... params) {
         try {
-            this.request = new MyTicketsRequest(forceCall);
-            result = this.request.getResponse();
-            return result;
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
-        } catch (InterruptedException | ExecutionException | TimeoutException e) {
+            MyTicketsRequest request = new MyTicketsRequest(true);
+            return request.getResponse();
+        } catch (JSONException | InterruptedException | ExecutionException | TimeoutException e) {
             e.printStackTrace();
         }
         return null;
     }
 
     @Override
-    protected void onPostExecute(JSONObject result){
-        Toast toast;
-        if(result == null){
-            toast = Toast.makeText(this.activity,"There was an error retrieving tickets",Toast.LENGTH_LONG);
-            toast.show();
-        } else {
-            try {
-                ((UserActivity)activity).fillTicketsContainer(result);
-            } catch (JSONException e) {
-                e.printStackTrace();
+    protected void onPostExecute(JSONObject result)  {
+        try{
+            ListView tickets = (ListView) this.activity.findViewById(R.id.user_ticketList_listView);
+            TicketListAdapter adapter = new TicketListAdapter();
+            JSONArray jsonTickets = (JSONArray) result.get("active");
+            for(int i = 0 ; i < jsonTickets.length(); i++){
+                adapter.add(new Ticket((JSONObject)jsonTickets.get(i)));
             }
+            tickets.setAdapter(adapter);
+        } catch (Exception e){
+            Toast toast = Toast.makeText(this.activity,"There was an error retrieving tickets",Toast.LENGTH_LONG);
+            toast.show();
         }
-    }
 
-    public JSONObject getResult(){
-        return this.result;
     }
 
 }
+;

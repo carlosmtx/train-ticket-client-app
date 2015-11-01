@@ -5,44 +5,14 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="400sp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true">
-        <LinearLayout
-            android:id="@+id/user_tickets_container"
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            xmlns:android="http://schemas.android.com/apk/res/android">
-
-            <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/layout_grid_form"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:columnCount="2"
-                android:layout_margin="10pt"
-                android:layout_marginBottom="20pt"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/user_signed_in"
-                    android:id="@+id/user_lbl_signed"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:id="@+id/user_lbl_username"/>
-            </GridLayout>
-
-        </LinearLayout>
 
 
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_ticketList_listView">
 
-    </ScrollView>
+    </ListView>
 
     <LinearLayout
         android:id="@+id/user_layout_bottom_button"
