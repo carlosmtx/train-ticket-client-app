@@ -4,9 +4,13 @@ import android.content.Context;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.railway.railway.RailwayApplication;
 import com.railway.railway.business.api.API;
 import com.railway.railway.business.api.RailwayAPI;
+import com.railway.railway.business.adapter.TicketGSONAdapter;
+import com.railway.railway.business.api.entity.Ticket;
 import com.railway.railway.business.api.storage.RailwayStorage;
 import com.railway.railway.business.api.storage.Storage;
 
@@ -43,5 +47,12 @@ public class ApplicationModule {
     API provideAPI(RequestQueue queue) {
         return new RailwayAPI(queue);
     }
+    @Provides @Singleton
+    Gson provideGSON(){
+        GsonBuilder gson = new GsonBuilder();
+        gson.registerTypeAdapter(Ticket.class, new TicketGSONAdapter());
+        return gson.create();
+    }
+
 
 }
