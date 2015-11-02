@@ -1,8 +1,6 @@
 package com.railway.railway.activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -13,9 +11,6 @@ import com.railway.railway.R;
 import com.railway.railway.business.api.entity.Ticket;
 
 import net.glxn.qrgen.android.QRCode;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class TicketQRCodeActivity extends MenuActivity {
 

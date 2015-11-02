@@ -25,8 +25,7 @@ public class PurchaseTicketRequest implements APIRequest {
                 .put("token", DI.get().provideStorage().getToken())
                 .put("departure", data.getDeparture())
                 .put("arrival", data.getArrival())
-                .put("date",data.getDate())
-                .put("time",data.getTime());
+                .put("departureTime",data.getDateTime().getTime());
 
         String url = "https://cmovtrainserver.herokuapp.com/ticket/purchase";
         this.future = RequestFuture.newFuture();

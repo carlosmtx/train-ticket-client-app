@@ -21,8 +21,8 @@ public class TicketListRowView extends LinearLayout {
     public TicketListRowView setTicket(Ticket ticket) {
         TextView date   = (TextView)this.findViewById(R.id.ticketlistitem_date);
         TextView fromTo = (TextView)this.findViewById(R.id.ticketlistitem_fromto);
-        date.setText(ticket.getDepartureDate() + " - " +ticket.getPrice() + "€");
         fromTo.setText(ticket.getDeparture() + " - " + ticket.getArrival());
+        date.setText(ticket.getDepartureDateTimeFormatted() + " - " +ticket.getPrice() + "€");
         return this;
     }
 }

@@ -4,6 +4,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by Leonel on 23/10/2015.
@@ -15,8 +19,7 @@ public class Ticket implements Serializable {
     private String arrival;
     private boolean validated;
     private float price;
-    private String departureTime;
-    private String departureDate;
+    private Timestamp departureDateTime;
     private String signature;
 
 
@@ -27,8 +30,13 @@ public class Ticket implements Serializable {
         this.arrival = t.get("arrival").toString();
         this.validated = (boolean) t.get("validated");
         this.price = Float.valueOf(t.get("price").toString());
-        this.departureTime =  t.get("departureTime").toString();
-        this.departureDate =  t.get("departureDate").toString();
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+            this.departureDateTime = new Timestamp(formatter.parse(t.get("departureTime").toString()).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //this.departureDateTime =  new Date(t.get("departureTime"));
         this.signature = t.get("signature").toString();
 
     }
@@ -52,13 +60,14 @@ public class Ticket implements Serializable {
         return price;
     }
 
-    public String getDepartureTime() {
-        return departureTime;
+    public Timestamp getDepartureDateTime() {
+        return departureDateTime;
     }
 
-    public String getDepartureDate() {
-        return departureDate;
+    public String getDepartureDateTimeFormatted(){
+        return new SimpleDateFormat("HH:mm dd/MM/yyyy").format(this.departureDateTime);
     }
+
 
     public String getSignature() {
         return signature;

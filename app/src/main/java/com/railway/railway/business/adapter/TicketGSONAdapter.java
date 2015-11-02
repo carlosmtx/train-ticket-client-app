@@ -25,8 +25,7 @@ public class TicketGSONAdapter  implements JsonSerializer<Ticket>, JsonDeseriali
         JsonObject obj = new JsonObject();
         obj.addProperty("arrival"       ,src.getArrival());
         obj.addProperty("departure"     ,src.getDeparture());
-        obj.addProperty("departureDate" ,src.getDepartureDate());
-        obj.addProperty("departureTime" ,src.getDepartureTime());
+        obj.addProperty("departureTime" ,src.getDepartureDateTimeFormatted());
         obj.addProperty("signature"     ,src.getSignature());
         return obj;
     }

@@ -1,5 +1,10 @@
 package com.railway.railway.business.api.request;
 
+
+import java.sql.Timestamp;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 /**
  * Created by Leonel on 26/10/2015.
  */
@@ -7,14 +12,20 @@ public class PurchaseTicketRequestData {
 
     String arrival;
     String departure;
-    String date;
-    String time;
+    Timestamp datetime;
 
     public PurchaseTicketRequestData(String arrival, String departure, String date, String time) {
         this.arrival = arrival;
         this.departure = departure;
-        this.date = date;
-        this.time = time;
+
+        try{
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+            long milis = dateFormat.parse(date + " " + time).getTime();
+            this.datetime = new Timestamp(milis);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public String getArrival() {
@@ -25,12 +36,8 @@ public class PurchaseTicketRequestData {
         return departure;
     }
 
-    public String getDate() {
-        return date;
+    public Timestamp getDateTime() {
+        return datetime;
     }
 
-
-    public String getTime() {
-        return time;
-    }
 }

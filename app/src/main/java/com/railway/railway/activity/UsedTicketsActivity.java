@@ -45,8 +45,7 @@ public class UsedTicketsActivity extends MenuActivity {
                     + currentTicket.getDeparture() + "\n"
                     + "To: "
                     + currentTicket.getArrival() + "\n"
-                    + currentTicket.getDepartureTime() + " "
-                    + currentTicket.getDepartureDate() + "\n"
+                    + currentTicket.getDepartureDateTimeFormatted() + "\n"
                     + currentTicket.getPrice() + "€"
             );
             ticketsContainer.addView(tv_ticket);

@@ -21,9 +21,8 @@ public class UserActivity extends MenuActivity {
         ListView lv = (ListView)findViewById(R.id.user_ticketList_listView);
         lv.setOnItemClickListener(new UserActivityTicketClick());
 
-
-        boolean forceCall = false;
-        if(getIntent().hasExtra("forceCall")) forceCall=true;
+        //boolean forceCall = false;
+        //if(getIntent().hasExtra("forceCall")) forceCall=true;
         new UserActivityMyTicketsTask(this).execute();
 
     }

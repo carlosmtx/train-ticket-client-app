@@ -43,10 +43,10 @@ public class PurchaseSelectStationsActivity extends MenuActivity {
 
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
+        int month = c.get(Calendar.MONTH) +1;
         int day = c.get(Calendar.DAY_OF_MONTH);
         TextView dateTV = (TextView) findViewById(R.id.purchase_lbl_date);
-        dateTV.setText(year + "/" + month + "/" + day);
+        dateTV.setText(year + "-" + month + "-" + day);
 
     }
 
