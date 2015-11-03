@@ -17,6 +17,9 @@ import com.railway.railway.activity.fragments.DatePickerFragment;
 import com.railway.railway.activity.listeners.PurchaseActivityGetStationsTask;
 import com.railway.railway.activity.listeners.PurchaseActivitySearchClick;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -45,8 +48,15 @@ public class PurchaseSelectStationsActivity extends MenuActivity {
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH) +1;
         int day = c.get(Calendar.DAY_OF_MONTH);
-        TextView dateTV = (TextView) findViewById(R.id.purchase_lbl_date);
-        dateTV.setText(year + "-" + month + "-" + day);
+        TextView tv_date = (TextView) findViewById(R.id.purchase_lbl_date);
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            long milis = dateFormat.parse(year + "-" + month + "-" + day).getTime();
+            Date parsedDate = new Date(milis);
+            tv_date.setText(parsedDate.toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
     }
 

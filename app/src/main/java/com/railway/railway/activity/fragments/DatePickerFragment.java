@@ -27,6 +27,15 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH) + 1;
         int day = c.get(Calendar.DAY_OF_MONTH);
+        TextView tv_date = (TextView) this.getActivity().findViewById(R.id.purchase_lbl_date);
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            long milis = dateFormat.parse(year + "-" + month + "-" + day).getTime();
+            Date parsedDate = new Date(milis);
+            tv_date.setText(parsedDate.toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return new DatePickerDialog(getActivity(), this, year, month, day);
     }
 
