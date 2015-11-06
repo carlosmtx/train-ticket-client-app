@@ -2,9 +2,9 @@
 <resources>
     <string name="purchase_lbl_intro">I\'d like to travel...</string>
 
-    <string name="purchase_lbl_departure">From:</string>
-    <string name="purchase_lbl_arrival">To:</string>
-    <string name="purchase_lbl_date_intro">On:</string>
+    <string name="purchase_lbl_departure">Departure:</string>
+    <string name="purchase_lbl_arrival">Arrival:</string>
+    <string name="purchase_lbl_date_intro">Date:</string>
     <string name="purchase_btn_proceed">Search Schedule</string>
     <string name="purchase_btn_pick_date">Pick Date</string>
 

@@ -18,7 +18,7 @@ public class TicketQRCodeActivity extends MenuActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ticket_qrcode);
+/*        setContentView(R.layout.activity_ticket_qrcode);
 
         Ticket ticket = (Ticket)getIntent().getSerializableExtra("ticket");
         TextView ticketInfo = (TextView)findViewById(R.id.ticketqrcode_lbl_ticket);
@@ -26,7 +26,7 @@ public class TicketQRCodeActivity extends MenuActivity {
 
         Bitmap myBitmap = QRCode.from(qrCodeInfo).bitmap();
         ImageView myImage = (ImageView) findViewById(R.id.ticketqrcode_qrcode_image);
-        myImage.setImageBitmap(myBitmap);
+        myImage.setImageBitmap(myBitmap);*/
     }
 
     @Override

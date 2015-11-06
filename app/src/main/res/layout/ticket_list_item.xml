@@ -33,5 +33,15 @@
             android:layout_toRightOf="@+id/ticketlistitem_image"
             android:layout_toEndOf="@+id/ticketlistitem_image"
             android:layout_marginLeft="15dp" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitStart"
+            android:id="@+id/ticketlistitem_qrcode"
+            android:layout_below="@+id/ticketlistitem_image"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:visibility="gone" />
     </RelativeLayout>
 </merge>

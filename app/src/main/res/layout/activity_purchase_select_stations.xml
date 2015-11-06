@@ -11,8 +11,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/purchase_lbl_departure"
-        android:layout_marginTop="28dp"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Spinner
         android:layout_width="fill_parent"

@@ -20,19 +20,4 @@
             android:id="@+id/ticketqrcode_qrcode_image" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/user_layout_bottom_button"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical" >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ticketqrcode_lbl_ticket"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-    </LinearLayout>
-
 </RelativeLayout>
