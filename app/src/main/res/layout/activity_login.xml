@@ -29,7 +29,7 @@
         android:textColor="#ffffff"
         android:textColorHint="#64ffffff"
         android:backgroundTint="#ffb046"
-        android:layout_below="@+id/register_password"
+        android:layout_below="@+id/imageView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -40,8 +40,8 @@
         android:textColorHint="#64ffffff"
         android:backgroundTint="#ffb046"
         android:textColor="#ffffff"
-        android:layout_below="@+id/imageView"
         android:layout_alignParentLeft="true"
+        android:layout_below="@+id/register_email"
         android:layout_alignParentStart="true" />
 
 
