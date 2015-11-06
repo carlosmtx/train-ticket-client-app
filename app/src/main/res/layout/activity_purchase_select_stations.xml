@@ -4,22 +4,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.railway.railway.activity.PurchaseSelectStationsActivity">
-
-    <TextView android:text="@string/purchase_lbl_intro"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:id="@+id/purchase_lbl_intro"
-        />
+    tools:context="com.railway.railway.activity.PurchaseSelectStationsActivity"
+   >
 
     <TextView android:text="@string/purchase_lbl_departure"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/purchase_lbl_departure"
         android:layout_marginTop="28dp"
-        android:layout_below="@+id/purchase_lbl_intro"
-        />
+        android:textSize="20dp" />
 
     <Spinner
         android:layout_width="fill_parent"
@@ -36,7 +29,8 @@
         android:id="@+id/purchase_lbl_arrival"
         android:layout_below="@+id/purchase_departure_spinner"
 
-        />
+        android:textSize="20dp"
+        android:layout_marginTop="30dp" />
 
     <Spinner
         android:id="@+id/purchase_arrival_spinner"
@@ -52,26 +46,32 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/purchase_arrival_spinner"
-        android:text="@string/purchase_lbl_date_intro" />
+        android:text="@string/purchase_lbl_date_intro"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp" />
 
     <TextView
         android:id="@+id/purchase_lbl_date"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/purchase_lbl_date_intro"
+        android:layout_height="50dp"
         android:textSize="8pt"
         android:textColor="@android:color/black"
-        android:layout_marginLeft="15sp"
-        android:text="29/19/2915" />
+        android:text="29/19/2915"
+        android:layout_toLeftOf="@+id/purchase_btn_pick_date"
+        android:layout_below="@+id/purchase_lbl_date_intro"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_vertical" />
 
     <ImageButton
         android:id="@+id/purchase_btn_pick_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/purchase_lbl_date"
-        android:layout_below="@+id/purchase_lbl_date_intro"
-        android:background="@drawable/ic_play_light"
-        android:text="@string/purchase_btn_pick_date" />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="@string/purchase_btn_pick_date"
+        android:src="@drawable/calendar"
+        android:layout_alignTop="@+id/purchase_lbl_date"
+        android:layout_alignRight="@+id/purchase_lbl_date_intro"
+        android:layout_alignEnd="@+id/purchase_lbl_date_intro" />
 
 
 

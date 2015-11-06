@@ -43,6 +43,13 @@ public class PurchaseSelectStationsActivity extends MenuActivity {
                 newFragment.show(getFragmentManager(),"datePicker");
             }
         });
+        TextView purchaseDate = (TextView) findViewById(R.id.purchase_lbl_date);
+        purchaseDate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                DialogFragment newFragment = new DatePickerFragment();
+                newFragment.show(getFragmentManager(),"datePicker");
+            }
+        });
 
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
