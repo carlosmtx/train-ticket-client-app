@@ -1,6 +1,12 @@
 package com.railway.railway.activity.adapter;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.app.ActionBar;
+import android.app.Activity;
 import android.graphics.Bitmap;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -24,7 +30,6 @@ public class TicketListAdapter extends BaseAdapter {
     public class TicketWrapper{
 
         private Ticket ticket;
-        private boolean changed = true;
         private boolean expanded = false;
 
         TicketWrapper(Ticket ticket){
@@ -37,13 +42,12 @@ public class TicketListAdapter extends BaseAdapter {
         }
 
         public TicketWrapper setTicket(Ticket ticket){
-            this.changed = true;
             this.ticket = ticket;
             return this;
+
         }
         public TicketWrapper expand(){
             this.expanded = true;
-            this.changed = true;
             return this;
         }
 
@@ -52,21 +56,13 @@ public class TicketListAdapter extends BaseAdapter {
         }
 
         public TicketWrapper collpase(){
-            if(!this.expanded){
-                return this;
-            }
             this.expanded = false;
-            this.changed = true;
             return this;
         }
 
-        public boolean hasChanged(){
-            return this.changed;
-        }
 
         private TicketWrapper setRefreshed(){
-                this.changed = false;
-                return this;
+            return this;
         }
 
     }
@@ -78,11 +74,7 @@ public class TicketListAdapter extends BaseAdapter {
         this.tickets = new ArrayList<TicketWrapper>();
     }
 
-    public void addTickets(List<Ticket> tickets){
-        for(Ticket ticket:tickets){
-            this.tickets.add(new TicketWrapper(ticket));
-        }
-    }
+
 
     public void add(Ticket ticket){
         this.tickets.add(new TicketWrapper(ticket));
@@ -107,7 +99,6 @@ public class TicketListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         TicketWrapper ticket = this.getItem(position);
 
-
         if(convertView == null) {
             String qrCodeInfo  = DI.get().provideGSON().toJson(ticket);
             Bitmap myBitmap = QRCode.from(qrCodeInfo).bitmap();
@@ -121,14 +112,16 @@ public class TicketListAdapter extends BaseAdapter {
             return view;
         }
 
-        if(!ticket.hasChanged()){
-            return convertView;
-        }
-
-
         ImageView image = (ImageView)convertView.findViewById(R.id.ticketlistitem_qrcode);
-        image.setVisibility(ticket.expanded ? View.VISIBLE : View.GONE);
-        ticket.setRefreshed();
+        ViewGroup.LayoutParams layoutParams = image.getLayoutParams();
+        if(ticket.expanded){
+            layoutParams.height= ViewGroup.LayoutParams.WRAP_CONTENT;
+            layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        } else {
+            layoutParams.height = 0;
+            layoutParams.width = 0;
+        }
+        image.setLayoutParams(layoutParams);
         return convertView;
     }
 
