@@ -13,6 +13,8 @@ import com.railway.railway.business.api.entity.Ticket;
 public class UserActivityTicketClick implements AdapterView.OnItemClickListener{
 
     public UserActivityTicketClick(){
+        int a = 2;
+        int c = 4;
     }
 
 

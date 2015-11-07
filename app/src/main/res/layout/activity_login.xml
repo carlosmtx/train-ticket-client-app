@@ -7,14 +7,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.railway.railway.activity.LoginActivity"
     android:background="@drawable/background"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:orientation="vertical">
 
     <!-- Login progress -->
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="246dp">
 
 
         <ImageView
@@ -50,36 +51,32 @@
             android:layout_below="@+id/register_email"
             android:layout_alignParentStart="true" />
 
-        <Button android:id="@+id/email_sign_in_button" style="?android:textAppearanceSmall"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="@string/action_sign_in"
-            android:textStyle="bold"
-            android:enabled="true"
-            android:gravity="center|center_vertical"
-            android:background="#7dffffff"
-
-            android:layout_above="@+id/register_button"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="30dp" />
-
-        <Button
-            style="?android:textAppearanceSmall"
-            android:id="@+id/register_button"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/action_register"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:gravity="center|center_vertical"
-            android:background="#7dffffff"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-
 
     </RelativeLayout>
+
+    <Button android:id="@+id/email_sign_in_button" style="?android:textAppearanceSmall"
+        android:layout_width="379dp" android:layout_height="wrap_content"
+        android:text="@string/action_sign_in"
+        android:textStyle="bold"
+        android:enabled="true"
+        android:gravity="center|center_vertical"
+        android:background="#7dffffff"
+
+        android:layout_above="@+id/register_button"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        style="?android:textAppearanceSmall"
+        android:id="@+id/register_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/action_register"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:gravity="center|center_vertical"
+        android:background="#7dffffff"
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>
 
