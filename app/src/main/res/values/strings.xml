@@ -13,4 +13,10 @@
 
     <string name="title_activity_purchase_select_stations">Purchase</string>
     <string name="title_activity_purchase_select_schedule">Purchase</string>
+    <string name="register_email_input_hint">email</string>
+    <string name="register_password_input_hint">password</string>
+    <string name="register_card_number_input_hint">credit card nr.</string>
+    <string name="register_card_date_input_hint">Validity</string>
+    <string name="register_register_button_text">Registar</string>
 </resources>
+
