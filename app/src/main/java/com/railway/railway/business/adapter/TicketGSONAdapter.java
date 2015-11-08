@@ -23,6 +23,7 @@ public class TicketGSONAdapter  implements JsonSerializer<Ticket>, JsonDeseriali
     @Override
     public JsonElement serialize(Ticket src, Type typeOfSrc, JsonSerializationContext context) {
         JsonObject obj = new JsonObject();
+        obj.addProperty("id"            ,src.getId());
         obj.addProperty("arrival"       ,src.getArrival());
         obj.addProperty("departure"     ,src.getDeparture());
         obj.addProperty("departureTime" ,src.getDepartureDateTimeFormatted());

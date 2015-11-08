@@ -4,7 +4,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,12 +30,11 @@ public class Ticket implements Serializable {
         this.validated = (boolean) t.get("validated");
         this.price = Float.valueOf(t.get("price").toString());
         try {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             this.departureDateTime = new Timestamp(formatter.parse(t.get("departureTime").toString()).getTime());
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        //this.departureDateTime =  new Date(t.get("departureTime"));
         this.signature = t.get("signature").toString();
 
     }

@@ -14,17 +14,10 @@ public class PurchaseTicketRequestData {
     String departure;
     Timestamp datetime;
 
-    public PurchaseTicketRequestData(String arrival, String departure, String date, String time) {
+    public PurchaseTicketRequestData(String arrival, String departure, Long departureTime) {
         this.arrival = arrival;
         this.departure = departure;
-
-        try{
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-            long milis = dateFormat.parse(date + " " + time).getTime();
-            this.datetime = new Timestamp(milis);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        this.datetime = new Timestamp(departureTime);
 
     }
 
