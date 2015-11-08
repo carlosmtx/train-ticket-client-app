@@ -48,7 +48,7 @@
 
         <ImageView
             android:animateLayoutChanges="true"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:scaleType="fitCenter"
             android:src="@drawable/qrcode"
             android:id="@+id/ticketlistitem_qrcode"
