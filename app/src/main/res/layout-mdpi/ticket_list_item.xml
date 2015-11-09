@@ -48,16 +48,13 @@
 
         <ImageView
             android:animateLayoutChanges="true"
-            android:layout_width="match_parent"
-            android:scaleType="fitCenter"
-            android:src="@drawable/qrcode"
+            android:layout_width="fill_parent"
+            android:scaleType="fitStart"
             android:id="@+id/ticketlistitem_qrcode"
             android:layout_below="@+id/ticketlistitem_ticket_container"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="false"
             android:layout_marginTop="0dp"
-            android:layout_alignParentEnd="false"
-            android:layout_alignParentRight="false"
             android:layout_height="0dp"
             android:adjustViewBounds="true" />
 
