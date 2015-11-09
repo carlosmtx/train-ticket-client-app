@@ -29,8 +29,8 @@ public class RegisterActivityRegisterClick implements View.OnClickListener {
                 username.getText().toString(),
                 email.getText().toString(),
                 password.getText().toString(),
-                creditCardNr.getText().toString(),
                 creditCardType.getSelectedItem().toString(),
+                creditCardNr.getText().toString(),
                 expiration.getText().toString()
         );
         new RegisterActivityRegisterTask(view.getContext(),data).execute();
