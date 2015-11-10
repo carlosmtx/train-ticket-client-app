@@ -39,10 +39,7 @@ public class AuthRequest implements APIRequest {
     public User getResponse() throws ExecutionException, InterruptedException, TimeoutException, JSONException {
         api.request(this);
         User user = new User(future.get());
-        DI.get().provideStorage().setToken(user.token);
         DI.get().provideStorage().setUser(user);
-
-        //DI.get().provideStorage().setToken(user.token);
         return user;
     }
 

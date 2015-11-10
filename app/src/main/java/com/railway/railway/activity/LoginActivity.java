@@ -1,9 +1,11 @@
 package com.railway.railway.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.railway.railway.DI;
 import com.railway.railway.R;
 import com.railway.railway.activity.listeners.LoginActivityLoginClick;
 import com.railway.railway.activity.listeners.LoginActivityRegisterClick;
@@ -26,6 +28,12 @@ public class LoginActivity extends Activity {
         this.register = (Button)findViewById(R.id.register_button);
         login.setOnClickListener(new LoginActivityLoginClick());
         register.setOnClickListener(new LoginActivityRegisterClick());
+        if (DI.get().provideStorage().getUser() != null) {
+            Intent intent = new Intent(this, UserActivity.class);
+            this.startActivity(intent);
+        }
+
+
     }
 
     public void disableButtons(){

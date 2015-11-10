@@ -3,10 +3,12 @@ package com.railway.railway.business.api.entity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by cteixeira on 10-10-2015.
  */
-public class User {
+public class User implements Serializable {
     public String token;
     public String email;
     public String name;
@@ -16,10 +18,7 @@ public class User {
     private String cardNumber;
     private String cardExpiration;
 
-    protected JSONObject response;
-
     public User(JSONObject response) throws JSONException {
-        this.response = response;
         this.email = response.get("email").toString();
         this.name = (response.isNull("name")) ? "" : (response.get("name").toString()) ;
         this.password = response.get("password").toString();
