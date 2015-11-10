@@ -56,7 +56,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="false"
             android:layout_marginTop="0dp"
-            android:layout_alignParentEnd="false"
             android:layout_height="0dp"
             android:adjustViewBounds="true" />
 
