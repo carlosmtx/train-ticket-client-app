@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+import com.railway.railway.DI;
 import com.railway.railway.activity.LoginActivity;
 
 /**
@@ -27,6 +28,8 @@ public class UserActivityOnBackPressed {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                DI.get().provideStorage().setToken("");
+                DI.get().provideStorage().setUser(null);
                 Intent intent = new Intent(activity, LoginActivity.class);
                 activity.startActivity(intent);
                 activity.finish();
