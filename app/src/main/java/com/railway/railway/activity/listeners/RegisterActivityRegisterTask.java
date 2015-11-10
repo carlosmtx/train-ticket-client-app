@@ -47,9 +47,9 @@ public class RegisterActivityRegisterTask extends AsyncTask<Void, Void, JSONObje
     protected void onPostExecute(JSONObject result) {
         Toast toast;
         if(result == null){
-            toast = Toast.makeText(this.context,"Nhé... deu asneira",Toast.LENGTH_LONG);
+            toast = Toast.makeText(this.context,"There was an error registering the user.",Toast.LENGTH_LONG);
         } else {
-            toast = Toast.makeText(this.context,"Parabens Registou-se",Toast.LENGTH_LONG);
+            toast = Toast.makeText(this.context,"Register completed.",Toast.LENGTH_LONG);
             Intent intent = new Intent(context, UserActivity.class);
             context.startActivity(intent);
         }

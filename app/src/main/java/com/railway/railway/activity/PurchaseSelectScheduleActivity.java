@@ -5,18 +5,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.railway.railway.DI;
 import com.railway.railway.R;
 import com.railway.railway.activity.listeners.PurchaseActivityScheduleClick;
+import com.railway.railway.activity.listeners.SelectScheduleTimeClick;
 
 import java.util.ArrayList;
 
 public class PurchaseSelectScheduleActivity extends MenuActivity {
-    float fixedPrice = (float) 10.30;
+    ListView scheduleOptionsContainer;
+
+    String departureStation;
+    String arrivalStation;
+    String dayDepartureTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,32 +31,29 @@ public class PurchaseSelectScheduleActivity extends MenuActivity {
         setContentView(R.layout.activity_purchase_select_schedule);
 
         // Stations passed from previous activity
-        String departureStation = getIntent().getStringExtra("departure");
-        String arrivalStation = getIntent().getStringExtra("arrival");
-        String date = getIntent().getStringExtra("date");
-
+        this.departureStation = getIntent().getStringExtra("departure");
+        this.arrivalStation = getIntent().getStringExtra("arrival");
+        this.dayDepartureTime = getIntent().getStringExtra("dayDepartureTime");
 
         TextView hello = (TextView)findViewById(R.id.purchase_lbl_from_to);
-        hello.setText(departureStation + " to " + arrivalStation + " on " + date);
+        hello.setText(departureStation + " to " + arrivalStation + " on " + dayDepartureTime);
 
-        fillScheduleOptions(departureStation, arrivalStation, date);
+        double price = DI.get().provideStorage().getSchedule().getPrice(departureStation,arrivalStation);
+
+        this.scheduleOptionsContainer = (ListView)findViewById(R.id.purchase_timetable_listView);
+        this.scheduleOptionsContainer.setOnItemClickListener(
+                new PurchaseActivityScheduleClick(this, departureStation, arrivalStation, dayDepartureTime, price)
+        );
+        fillScheduleOptions(departureStation, arrivalStation, dayDepartureTime);
 
     }
 
     private void fillScheduleOptions(String departure,String arrival, String date) {
-        LinearLayout container = (LinearLayout)findViewById(R.id.purchase_timetable_container);
-
         ArrayList<String> timetable = DI.get().provideStorage().getSchedule().getTimetable(departure, arrival);
-        double price = DI.get().provideStorage().getSchedule().getPrice(departure,arrival);
 
-        for(int i=0; i < timetable.size(); i++){
-            Button btn_time = new Button(this);
-            btn_time.setId(i);
-            btn_time.setGravity(Gravity.LEFT);
-            btn_time.setText(timetable.get(i));
-            btn_time.setOnClickListener(new PurchaseActivityScheduleClick(departure, arrival, date, timetable.get(i), price));
-            container.addView(btn_time);
-        }
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, timetable);
+        this.scheduleOptionsContainer.setAdapter(adapter);
 
     }
 
