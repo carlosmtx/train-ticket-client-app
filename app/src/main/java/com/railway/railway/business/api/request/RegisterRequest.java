@@ -5,6 +5,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
 import com.railway.railway.DI;
 import com.railway.railway.business.api.API;
+import com.railway.railway.business.api.entity.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,7 +54,7 @@ public class RegisterRequest implements APIRequest {
     public JSONObject getResponse() throws ExecutionException, InterruptedException, JSONException {
         api.request(this);
         JSONObject response = future.get();
-        DI.get().provideStorage().setToken(response.get("token").toString());
+        DI.get().provideStorage().setUser(new User(response));
         return response;
     }
 
