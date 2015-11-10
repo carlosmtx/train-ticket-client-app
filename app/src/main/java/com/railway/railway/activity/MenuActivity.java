@@ -6,7 +6,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.railway.railway.DI;
 import com.railway.railway.R;
+import com.railway.railway.activity.listeners.LogoutClick;
 
 /**
  * Created by Leonel on 29/10/2015.
@@ -39,6 +41,9 @@ public class MenuActivity extends AppCompatActivity {
         else if(id == R.id.menu_user_settings){
             Intent intent = new Intent(this, AccountActivity.class);
             this.startActivity(intent);
+        }
+        else if(id == R.id.menu_user_logout){
+            new LogoutClick(this);
         }
 
         return super.onOptionsItemSelected(item);

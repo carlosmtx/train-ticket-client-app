@@ -6,7 +6,7 @@ import android.widget.ListView;
 
 import com.railway.railway.R;
 import com.railway.railway.activity.listeners.UserActivityMyTicketsTask;
-import com.railway.railway.activity.listeners.UserActivityOnBackPressed;
+import com.railway.railway.activity.listeners.LogoutClick;
 import com.railway.railway.activity.listeners.UserActivityPurchaseClick;
 import com.railway.railway.activity.listeners.UserActivityTicketClick;
 
@@ -30,6 +30,6 @@ public class UserActivity extends MenuActivity {
 
     @Override
     public void onBackPressed() {
-        new UserActivityOnBackPressed(this);
+        new LogoutClick(this);
     }
 }

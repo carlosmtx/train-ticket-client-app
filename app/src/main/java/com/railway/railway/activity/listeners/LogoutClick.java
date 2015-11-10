@@ -6,15 +6,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+import com.railway.railway.DI;
 import com.railway.railway.activity.LoginActivity;
 
 /**
  * Created by Leonel on 23/10/2015.
  */
-public class UserActivityOnBackPressed {
+public class LogoutClick {
     private Activity activity;
 
-    public UserActivityOnBackPressed(Activity ctx){
+    public LogoutClick(Activity ctx){
         this.activity = ctx;
         triggerAlertDialog();
     }
@@ -28,6 +29,8 @@ public class UserActivityOnBackPressed {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(activity, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                DI.get().provideStorage().setUser(null);
                 activity.startActivity(intent);
                 activity.finish();
             }

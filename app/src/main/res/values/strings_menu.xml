@@ -3,4 +3,6 @@
     <string name="menu_used_tickets">Used Tickets</string>
     <string name="menu_user_schedule">Schedule</string>
     <string name="menu_user_settings">Settings</string>
+    <string name="menu_user_logout">Logout</string>
+
 </resources>
