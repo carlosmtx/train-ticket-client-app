@@ -30,6 +30,7 @@ public class LogoutClick {
             public void onClick(DialogInterface dialog, int which) {
                 DI.get().provideStorage().setToken("");
                 DI.get().provideStorage().setUser(null);
+                DI.get().provideStorage().setTickets(null);
                 Intent intent = new Intent(activity, LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 DI.get().provideStorage().setUser(null);

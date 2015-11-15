@@ -126,6 +126,8 @@ public class TicketListAdapter extends BaseAdapter {
             view.setTicket(tickets.get(position).ticket);
             return view;
         }
+        int c = 8;
+        int k = 8;
 
         ImageView image = (ImageView)convertView.findViewById(R.id.ticketlistitem_qrcode);
         ViewGroup.LayoutParams layoutParams = image.getLayoutParams();

@@ -16,6 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
@@ -44,19 +45,23 @@ public class UserActivityMyTicketsTask extends AsyncTask<Void, Void, JSONObject>
 
     @Override
     protected void onPostExecute(JSONObject result)  {
+        ListView tickets = (ListView) this.activity.findViewById(R.id.user_ticketList_listView);
+        TicketListAdapter adapter = new TicketListAdapter();
         try{
-            ListView tickets = (ListView) this.activity.findViewById(R.id.user_ticketList_listView);
-            TicketListAdapter adapter = new TicketListAdapter();
             JSONArray jsonTickets = (JSONArray) result.get("active");
+            ArrayList<Ticket> ticketsParsed = new ArrayList<>();
             for(int i = 0 ; i < jsonTickets.length(); i++){
-                adapter.add(new Ticket((JSONObject)jsonTickets.get(i)));
+                Ticket ticket = new Ticket((JSONObject)jsonTickets.get(i));
+                ticketsParsed.add(ticket);
             }
-            tickets.setAdapter(adapter);
+            DI.get().provideStorage().setTickets(ticketsParsed);
         } catch (Exception e){
-            Toast toast = Toast.makeText(this.activity,"There was an error retrieving tickets",Toast.LENGTH_LONG);
-            toast.show();
-        }
 
+        }
+        for(Ticket ticket:DI.get().provideStorage().getTickets()) {
+            adapter.add(ticket);
+        }
+        tickets.setAdapter(adapter);
     }
 
 }
