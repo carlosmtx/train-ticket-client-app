@@ -108,7 +108,7 @@ public class TicketListAdapter extends BaseAdapter {
         TicketWrapper ticket = this.getItem(position);
 
         if(convertView == null) {
-            String qrCodeInfo  = DI.get().provideGSON().toJson(ticket);
+            String qrCodeInfo  = DI.get().provideGSON().toJson(ticket.ticket);
             WindowManager wm = (WindowManager) DI.get().provideAppContext().getSystemService(Context.WINDOW_SERVICE);
             Display display = wm.getDefaultDisplay();
             Point size = new Point();
