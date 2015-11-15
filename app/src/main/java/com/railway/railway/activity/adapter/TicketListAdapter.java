@@ -4,11 +4,15 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Point;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
@@ -18,7 +22,11 @@ import com.railway.railway.activity.views.TicketListRowView;
 import com.railway.railway.business.api.entity.Ticket;
 
 import net.glxn.qrgen.android.QRCode;
+import net.glxn.qrgen.core.AbstractQRCode;
+import net.glxn.qrgen.core.image.ImageType;
 
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,13 +109,20 @@ public class TicketListAdapter extends BaseAdapter {
 
         if(convertView == null) {
             String qrCodeInfo  = DI.get().provideGSON().toJson(ticket);
-            Bitmap myBitmap = QRCode.from(qrCodeInfo).bitmap();
+            WindowManager wm = (WindowManager) DI.get().provideAppContext().getSystemService(Context.WINDOW_SERVICE);
+            Display display = wm.getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            int width = size.x;
 
+            AbstractQRCode qr = QRCode.from(qrCodeInfo).withSize(width-50, width-50).to(ImageType.PNG);
+            byte[] qrcodeBytes = qr.stream().toByteArray();
+            Bitmap qrcode = BitmapFactory.decodeByteArray(qrcodeBytes,0,qrcodeBytes.length);
             TicketListRowView view = new TicketListRowView(
                     parent.getContext()
             );
             ImageView image = (ImageView)view.findViewById(R.id.ticketlistitem_qrcode);
-            image.setImageBitmap(myBitmap);
+            image.setImageBitmap(qrcode);
             view.setTicket(tickets.get(position).ticket);
             return view;
         }
