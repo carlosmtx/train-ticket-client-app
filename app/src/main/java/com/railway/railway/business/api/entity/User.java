@@ -19,14 +19,14 @@ public class User implements Serializable {
     private String cardExpiration;
 
     public User(JSONObject response) throws JSONException {
-        this.email = response.get("email").toString();
-        this.name = (response.isNull("name")) ? "" : (response.get("name").toString()) ;
-        this.password = response.get("password").toString();
-        this.email = response.get("email").toString();
-        this.cardType = response.get("cardType").toString();
-        this.cardNumber = response.get("cardNumber").toString();
-        this.cardExpiration = response.get("cardExpiration").toString();
-        this.token = response.get("token").toString();
+        this.email =            response.has("email")           ? response.get("email").toString() : "";
+        this.name =             response.has("name")            ? response.get("name").toString()  : "";
+        this.password =         response.has("password")        ? response.get("password").toString() : "";
+        this.email =            response.has("email")           ? response.get("email").toString() : "";
+        this.cardType =         response.has("cardType")        ? response.get("cardType").toString() : "";
+        this.cardNumber =       response.has("cardNumber")      ? response.get("cardNumber").toString() : "";
+        this.cardExpiration =   response.has("cardExpiration")  ? response.get("cardExpiration").toString() : "";
+        this.token =            response.has("token")           ? response.get("token").toString() : "";
     }
 
     public String getCardType() {

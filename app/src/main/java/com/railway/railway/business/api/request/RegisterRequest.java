@@ -31,7 +31,7 @@ public class RegisterRequest implements APIRequest {
                 .put("password", data.password)
                 .put("cardType", data.cardType)
                 .put("cardNumber", data.cardNumber)
-                .put("cardExpiration", data.validity);
+                .put("validity", data.validity);
 
         String url = "https://cmovtrainserver.herokuapp.com/user";
         this.future = RequestFuture.newFuture();
