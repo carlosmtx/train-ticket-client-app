@@ -13,12 +13,14 @@ public class User implements Serializable {
     public String email;
     public String name;
     public String password;
+    public String id;
 
     private String cardType;
     private String cardNumber;
     private String cardExpiration;
 
     public User(JSONObject response) throws JSONException {
+        this.id =               response.has("id")              ? response.get("id").toString() : "";
         this.email =            response.has("email")           ? response.get("email").toString() : "";
         this.name =             response.has("name")            ? response.get("name").toString()  : "";
         this.password =         response.has("password")        ? response.get("password").toString() : "";
