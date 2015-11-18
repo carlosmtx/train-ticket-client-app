@@ -102,8 +102,11 @@ public class RailwayStorage implements Storage {
 
     @Override
     public void setTickets(List<Ticket> tickets){
+        if (tickets == null)
+            this.tickets = null;
+        else
+            this.tickets = new ArrayList<>(tickets);
         save();
-        this.tickets = new ArrayList<>(tickets);
     }
 
     @Override
